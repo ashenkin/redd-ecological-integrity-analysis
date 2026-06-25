@@ -1,0 +1,356 @@
+---
+title: "REDD_MatchingCode"
+output: pdf_document
+date: "2025-08-15"
+---
+
+Title: REDD+ Matching and Environmental Data Processing
+Author: Kelly Ong
+
+Description:
+This script implements the spatial preprocessing and
+propensity score matching pipeline for REDD+ project
+polygons and their surrounding control areas.
+
+Procedure:
+1. Reads REDD+ and control polygons.
+2. Loads spatial environmental datasets at multiple resolutions.
+3. Masks and extracts data within an Area of Interest (AOI).
+4. Selects matching covariates via coefficient of variation (CV) 
+and variance inflation factor (VIF) filtering.
+5. Performs nearest-neighbour matching with Mahalanobis distance.
+6. Saves matched datasets, SMD statistics, and diagnostic plots.
+
+# 0. Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = TRUE, message = TRUE)
+
+# Set the working directory where all datasets are located
+wd <- "~/Documents/Ecological Integrity of Avoided Deforestation projects/trial/data/"
+
+# Load required packages
+library(sf)         # vector data
+library(terra)      # raster data
+library(dplyr)      # data wrangling
+library(ggplot2)    # plotting
+library(MatchIt)    # matching
+library(usdm)       # VIF (vifstep)
+library(cobalt)     # balance diagnostics
+library(tidyr)      # reshaping
+library(ggspatial)  # map scalebars
+
+# Output dirs
+dirs_to_create <- c(
+  "output/matching_REDD_and_control", 
+  "output/NN_output_SMD_results_mahvars", 
+  "output/NN_output_matched_data_mahvars",
+  "output/NN_output_RDS_mahvars"
+)
+lapply(file.path(wd, dirs_to_create), dir.create, recursive = TRUE, showWarnings = FALSE)
+```
+
+# 1. Read core data
+
+```{r}
+# REDD+ project polygons (with REDD UID & biome info)
+redd <- st_read(file.path(wd, "REDD.shp"))
+
+# Control polygons (with REDD UID & biome info)
+control <- st_read(file.path(wd, "REDD_control.shp"))
+
+# Protected Areas raster (1 km resolution; cell value = 1 if PA present)
+pa_raster <- rast(file.path(wd, "PA/pa_raster.tif"))
+
+# Project-specific pixel resolution (km)
+area <- read.csv(file.path(wd, "area.csv"))
+```
+
+# 2. Define resolutions and variable sets
+
+```{r}
+# Resolutions tested (in km)
+resolutions <- c(1, 2, 4, 8, 16)
+
+# Covariates for pixel-level propensity score matching
+matching_datasets_names <- list(
+  aboveground_biomass_2000 = "aboveground_biomass_2000",
+  precipitation            = "precipitation",
+  elevation                = "elevation",
+  slope                    = "slope",
+  human_footprint          = "human_footprint",
+  gdp                      = "gdp",
+  population_density       = "population_density",
+  accessibility            = "accessibility"
+)
+
+# Ecological integrity datasets
+env_datasets_names <- list(
+  forestInt        = "forestInt",
+  forestFrag       = "forestFrag",
+  carbon_flux      = "carbon_flux",
+  canopy_height    = "canopy_height",
+  biodIntact2015   = "biodIntact2015"
+)
+```
+
+# 3. Load rasters into nested lists
+
+```{r}
+# Each resolution is stored as a sublist of rasters for all variables.
+
+load_rasters_by_res <- function(resolutions, var_names, base_folder) {
+  out_list <- list()
+  for (res in resolutions) {
+    sublist <- list()
+    for (var in var_names) {
+      f <- file.path(wd, base_folder, paste0("resolution_", res, "km"),
+                     paste0(var, "_res", res, "km.tif"))
+      if (!file.exists(f)) {
+        warning("File not found: ", f)
+        next
+      }
+      sublist[[var]] <- rast(f)
+    }
+    out_list[[as.character(res)]] <- sublist
+  }
+  out_list
+}
+
+matching_vars <- names(matching_datasets_names)
+env_vars <- names(env_datasets_names)
+
+matching_rasters_list <- load_rasters_by_res(resolutions, matching_vars, "matching")
+env_rasters_list <- load_rasters_by_res(resolutions, env_vars, "environmental")
+```
+
+# 4. Helper functions
+
+```{r}
+# Mask a raster to the extent of a vector polygon, reprojecting if necessary
+mask_to_area <- function(raster_obj, buffer_vect) {
+  if (crs(raster_obj) != crs(buffer_vect)) {
+    raster_obj <- project(raster_obj, crs(buffer_vect))
+  }
+  mask(crop(raster_obj, buffer_vect), buffer_vect, touches = TRUE)
+}
+
+# Coefficient of Variation (CV)
+compute_cv <- function(x) {
+  m <- mean(x, na.rm = TRUE)
+  if (m == 0) return(0)
+  (sd(x, na.rm = TRUE) / m) * 100
+}
+
+# Select variables with CV above a given threshold
+select_vars_by_cv <- function(data, var_names, cv_threshold = 15) {
+  cv_vals <- sapply(data[var_names], compute_cv)
+  intersect(names(cv_vals)[cv_vals > cv_threshold], names(data))
+}
+```
+
+# 5. Matching loop
+
+```{r}
+# Loops over REDD+ projects, performs masking, covariate selection,
+# propensity score matching, and saves results.
+
+n <- nrow(redd)
+
+for (i in seq_len(n)) {
+  
+  # Periodic memory cleanup
+  if (i %% 10 == 0) { gc(); cat("...gc at i =", i, "\n") }
+  
+  # A. Identify REDD polygon and attributes
+  redd_polygon <- redd[i, ]
+  current_uid <- redd_polygon$UID
+  redd_vect <- vect(redd_polygon)
+  
+  # B. Identify control polygon for the same biome (same UID & biome)
+  control_poly <- control[control$UID == current_uid &
+                          control$BIOME_NUM == redd_polygon$BIOME_NUM, ]
+  control_vect <- vect(control_poly)
+  
+  # C. Combine REDD and control areas into AOI
+  aoi_vect <- terra::union(redd_vect, control_vect) 
+  
+  # D. Save AOI plot for QC
+  buffer_plot <- ggplot() +
+    geom_sf(data = control_poly, fill = "lightblue", alpha = 0.5, color = "blue") +
+    geom_sf(data = redd_polygon, fill = "green", color = "darkgreen") +
+    ggtitle(paste0(current_uid, " REDD polygon & control")) +
+    theme_minimal() +
+    annotation_scale()
+  ggsave(file.path(wd, "output/matching_REDD_and_control", paste0(current_uid, ".png")),
+         plot = buffer_plot)
+  
+  # E. Resolution lookup
+  fact <- as.numeric(area$Resolution[area$UID == current_uid])
+  if (length(fact) == 0) next
+  
+  # F. Mask matching and environmental rasters to AOI
+  matching_sublist <- matching_rasters_list[[as.character(fact)]]
+  env_sublist <- env_rasters_list[[as.character(fact)]]
+  if (is.null(matching_sublist) || is.null(env_sublist)) next
+  
+  masked_matching_rasters <- lapply(matching_sublist, mask_to_area, buffer_vect = aoi_vect)
+  masked_env_rasters <- lapply(env_sublist, mask_to_area, buffer_vect = aoi_vect)
+  
+  match_df <- as.data.frame(rast(masked_matching_rasters), na.rm = TRUE, xy = TRUE)
+  env_df <- as.data.frame(rast(masked_env_rasters), na.rm = FALSE, xy = TRUE)
+  
+  # Merge matching and environmental data by coordinates
+  data_merged <- merge(env_df, match_df, by = c("x", "y"))
+  if (nrow(data_merged) == 0) next
+  
+  # G. Mark REDD+ presence
+  precip_redd <- mask_to_area(matching_sublist[["precipitation"]], redd_vect)
+  inout <- terra::extract(precip_redd, data_merged[, c("x", "y")])
+  data_merged$inside_REDD <- ifelse(is.na(inout[, 2]), 0, 1)
+  
+  # H. Mark protected area presence
+  pa_extract <- terra::extract(pa_raster, data_merged[, c("x", "y")])
+  data_merged$inside_PA <- ifelse(pa_extract[, 2] == 1, 1, 0)
+  
+  # I. Covariate selection: CV filter + VIF filter
+  existing_vars <- intersect(names(matching_datasets_names), names(data_merged))
+  selected_vars_cv <- select_vars_by_cv(data_merged, existing_vars, cv_threshold = 15)
+  if (length(selected_vars_cv) == 0) next
+  
+  if (length(selected_vars_cv) > 1) {
+    vif_result <- vifstep(data_merged[, selected_vars_cv, drop = FALSE], th = 10)
+    selected_vars <- vif_result@results$Variables
+  } else {
+    selected_vars <- selected_vars_cv
+  }
+  
+  # Remove incomplete cases
+  data_matching <- data_merged[complete.cases(data_merged[, c("inside_REDD", selected_vars)]), ]
+  if (nrow(data_matching) == 0) next
+  
+  # J. Propensity score matching (1:1 NN, Mahalanobis distance)
+  m.out <- tryCatch({
+    matchit(
+      inside_REDD ~ ., 
+      data = data_matching[, c("inside_REDD", selected_vars), drop = FALSE],
+      method = "nearest",
+      distance = "logit",
+      mahvars = as.formula(paste("~", paste(selected_vars, collapse = "+"))),
+      caliper = 0.25,
+      ratio = 1,
+      replace = FALSE
+    )
+  }, error = function(e) NULL)
+  if (is.null(m.out)) next
+  
+  saveRDS(m.out, file.path(wd, "output/NN_output_RDS_mahvars",
+                           paste0("NN_matched_data_", current_uid, "_biome_", redd_polygon$BIOME_NUM, ".rds")))
+  
+  # K. Extract matched dataset and append metadata
+  matched_data <- match.data(m.out)
+  if (nrow(matched_data) == 0) next
+  
+  matched_data <- as.data.frame(matched_data)
+  matched_ids <- rownames(matched_data)
+  
+  # columns you want to bring back from original data
+  extra_cols <- intersect(
+    c("x", "y", names(env_datasets_names), names(selected_vars)),
+    colnames(data_matching)
+  )
+  
+  # bind them back using rownames
+  matched_data <- cbind(
+    matched_data,
+    data_matching[matched_ids, extra_cols, drop = FALSE]
+  )
+  
+  # remove duplicated columns if any
+  matched_data <- matched_data[, !duplicated(colnames(matched_data)), drop = FALSE]
+  
+  # add metadata
+  matched_data$country_id <- redd_polygon$country_id
+  matched_data$REDD <- current_uid
+  matched_data$BIOME_NUM <- redd_polygon$BIOME_NUM
+  
+  # extract PA values
+  pts <- terra::vect(
+    matched_data[, c("x", "y")],
+    geom = c("x", "y"),
+    crs = "EPSG:4326"
+  )
+  
+  pa_extract_matched <- terra::extract(pa_raster, pts)
+  matched_data$inside_protected_area <- ifelse(pa_extract_matched[, 2] == 1, 1, 0)
+  
+  # L. Assign pair IDs between "REDD" and "no REDD"
+  if (!is.null(m.out) && !is.null(m.out$match.matrix)) {
+    
+    # 1) Extract the matching matrix
+    match_matrix <- m.out$match.matrix
+    
+    # 2) Convert match_matrix -> long format
+    pairs_df <- as.data.frame(match_matrix) %>%
+      mutate(treated = rownames(match_matrix)) %>%
+      pivot_longer(
+        cols = -treated,             # pivot everything EXCEPT 'treated'
+        names_to = "control_slot",
+        values_to = "control"
+      ) %>%
+      filter(!is.na(control)) %>%
+      mutate(
+        treated = as.numeric(treated),
+        control = as.numeric(control)
+      )
+    
+    # 3) Create a simple ID for each matched pair
+    pairs_df$pair_id <- seq_len(nrow(pairs_df))
+    
+    # 4) Reshape so each observation is in its own row (treated or control)
+    pairs_long <- pairs_df %>%
+      dplyr::select(pair_id, id = treated) %>%
+      mutate(role = "treated") %>%
+      bind_rows(
+        pairs_df %>%
+          dplyr::select(pair_id, id = control) %>%
+          mutate(role = "control")
+      )
+    
+    # 5) Merge pair information back into matched_data
+    matched_data$original_id <- rownames(matched_data)
+    pairs_long$id <- as.character(pairs_long$id)
+    
+    final_matched_data <- matched_data %>%
+      left_join(pairs_long, by = c("original_id" = "id"))
+    
+    # 6) Write out final_matched_data (with pair info, x,y, inside_protected_area, etc.)
+    columns_to_save <- c(
+      "pair_id", "role", "x", "y", "country_id", "REDD", 
+      "inside_REDD", "inside_protected_area", 
+      names(env_datasets_names), names(matching_datasets_names)
+    )
+    columns_to_save <- intersect(columns_to_save, colnames(final_matched_data))
+    
+    output_file <- paste0(wd, "output/NN_output_matched_data_mahvars/NN_matched_data_",
+                          current_uid, "_biome_", redd[i, ]$BIOME_NUM, ".csv")
+    write.csv(final_matched_data[, columns_to_save, drop = FALSE],
+              file = output_file, row.names = FALSE)
+    
+    cat("Wrote matched data with pairing info for REDD", current_uid, "resolution", fact, "km and biome", redd[i, ]$BIOME_NUM, "\n")
+  }
+  
+  # M. Save standardised mean differences (SMDs) for covariates
+  balance_summary <- bal.tab(m.out, un = TRUE)
+  smd_df <- data.frame(
+    Covariate = rownames(balance_summary$Balance),
+    SMD = round(balance_summary$Balance$Diff.Adj, 4)
+  )
+  write.csv(smd_df, file.path(wd, "output/NN_output_SMD_results_mahvars",
+                              paste0("NN_SMD_", current_uid, "_biome_", redd_polygon$BIOME_NUM, ".csv")),
+            row.names = FALSE)
+  
+  cat("Processed:", current_uid, "\n")
+}
+```
+

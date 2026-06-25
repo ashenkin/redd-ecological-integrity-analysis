@@ -1,0 +1,1108 @@
+uid,metric,comparison,r2yd_x,rv_q,rv_qa,benchmark_var
+ACCUEOP100756,biodIntact2015,REDD vs no REDD (PA),2.9,15.8,0,accessibility
+ACCUEOP100841,biodIntact2015,REDD vs no REDD (PA),7.1,24,3.3,slope
+ACCUEOP100898,biodIntact2015,REDD vs no REDD (PA),20.9,39.9,22.6,human_footprint
+ACCUEOP100964,biodIntact2015,REDD vs no REDD (PA),6.2,22.6,0,gdp
+ACCUEOP101062,biodIntact2015,REDD vs no REDD (PA),NA,NA,NA,elevation
+ACCUEOP101086,biodIntact2015,REDD vs no REDD (PA),3.5,17.3,0,gdp
+ACCUEOP101088,biodIntact2015,REDD vs no REDD (PA),20.7,39.6,18.6,precipitation
+ACCUEOP101141,biodIntact2015,REDD vs no REDD (PA),6.4,23,0,aboveground_biomass_2000
+ACCUEOP101157,biodIntact2015,REDD vs no REDD (PA),0.6,7.7,0,aboveground_biomass_2000
+ACCUEOP101164,biodIntact2015,REDD vs no REDD (PA),0.2,4.6,0,human_footprint
+ACCUERF105144,biodIntact2015,REDD vs no REDD (PA),2.5,14.7,0,accessibility
+ACR268,biodIntact2015,REDD vs no REDD (PA),0.7,7.9,0,human_footprint
+ER53,biodIntact2015,REDD vs no REDD (PA),25,43.5,33.6,gdp
+ER55,biodIntact2015,REDD vs no REDD (PA),5.8,22,0,accessibility
+ER67,biodIntact2015,REDD vs no REDD (PA),2.2,13.9,0,elevation
+ER99,biodIntact2015,REDD vs no REDD (PA),0.5,6.8,0,population_density
+VCS1112,biodIntact2015,REDD vs no REDD (PA),4.9,20.3,7.6,precipitation
+VCS1113,biodIntact2015,REDD vs no REDD (PA),32.2,49.2,42.6,precipitation
+VCS1115,biodIntact2015,REDD vs no REDD (PA),0.4,6.3,0,aboveground_biomass_2000
+VCS1215,biodIntact2015,REDD vs no REDD (PA),0,1.2,0,slope
+VCS1326,biodIntact2015,REDD vs no REDD (PA),1.4,11.4,0,human_footprint
+VCS1399,biodIntact2015,REDD vs no REDD (PA),3.3,16.8,3.3,slope
+VCS1408,biodIntact2015,REDD vs no REDD (PA),51.5,62.9,55,elevation
+VCS1532,biodIntact2015,REDD vs no REDD (PA),47.9,60.4,54.9,elevation
+VCS1571,biodIntact2015,REDD vs no REDD (PA),31.5,48.6,44.3,aboveground_biomass_2000
+VCS1622,biodIntact2015,REDD vs no REDD (PA),0.3,5.3,0,human_footprint
+VCS1654,biodIntact2015,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS1672,biodIntact2015,REDD vs no REDD (PA),24.9,43.3,34.8,accessibility
+VCS1686,biodIntact2015,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS1689,biodIntact2015,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS1775,biodIntact2015,REDD vs no REDD (PA),56.4,66.2,57.4,gdp
+VCS1811,biodIntact2015,REDD vs no REDD (PA),5.5,21.3,11.1,aboveground_biomass_2000
+VCS1881,biodIntact2015,REDD vs no REDD (PA),28.5,46.3,32.7,aboveground_biomass_2000
+VCS1897,biodIntact2015,REDD vs no REDD (PA),6.7,23.4,6.7,human_footprint
+VCS1953,biodIntact2015,REDD vs no REDD (PA),24.1,42.7,24.9,aboveground_biomass_2000
+VCS2084,biodIntact2015,REDD vs no REDD (PA),NA,NA,NA,NA
+VCS2252,biodIntact2015,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS2373,biodIntact2015,REDD vs no REDD (PA),22.8,41.5,33.7,elevation
+VCS2403,biodIntact2015,REDD vs no REDD (PA),2,13.3,0,human_footprint
+VCS2502,biodIntact2015,REDD vs no REDD (PA),22.7,41.4,34.6,elevation
+VCS2508,biodIntact2015,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS2551,biodIntact2015,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS2872,biodIntact2015,REDD vs no REDD (PA),7.1,24,10,precipitation
+VCS3506,biodIntact2015,REDD vs no REDD (PA),1,9.7,0,aboveground_biomass_2000
+VCS562,biodIntact2015,REDD vs no REDD (PA),NA,NA,NA,elevation
+VCS612,biodIntact2015,REDD vs no REDD (PA),39,54.1,49.5,elevation
+VCS674,biodIntact2015,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS875,biodIntact2015,REDD vs no REDD (PA),0,2.2,0,precipitation
+VCS904,biodIntact2015,REDD vs no REDD (PA),5.1,20.6,12.3,precipitation
+VCS963,biodIntact2015,REDD vs no REDD (PA),68.6,74.6,68.2,precipitation
+VCS977,biodIntact2015,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS981,biodIntact2015,REDD vs no REDD (PA),NA,NA,NA,precipitation
+ACCUEOP101157,forestInt,REDD vs no REDD (PA),5.4,21.3,11,aboveground_biomass_2000
+ACCUEOP101164,forestInt,REDD vs no REDD (PA),0.4,6.5,0,human_footprint
+ACR268,forestInt,REDD vs no REDD (PA),13.4,32.3,14,human_footprint
+ER53,forestInt,REDD vs no REDD (PA),0.7,8.1,0,gdp
+ER55,forestInt,REDD vs no REDD (PA),0.8,8.7,0,gdp
+ER67,forestInt,REDD vs no REDD (PA),8.6,26.3,6.4,elevation
+ER99,forestInt,REDD vs no REDD (PA),0.9,9.3,0,accessibility
+VCS1112,forestInt,REDD vs no REDD (PA),0.4,5.9,0,elevation
+VCS1113,forestInt,REDD vs no REDD (PA),0.1,2.7,0,elevation
+VCS1115,forestInt,REDD vs no REDD (PA),8.2,25.7,14.2,aboveground_biomass_2000
+VCS1215,forestInt,REDD vs no REDD (PA),33.1,49.8,31.1,aboveground_biomass_2000
+VCS1326,forestInt,REDD vs no REDD (PA),0.2,3.9,0,human_footprint
+VCS1399,forestInt,REDD vs no REDD (PA),28.7,46.4,38.1,accessibility
+VCS1408,forestInt,REDD vs no REDD (PA),0.6,7.4,0,elevation
+VCS1532,forestInt,REDD vs no REDD (PA),1.8,12.5,0,population_density
+VCS1571,forestInt,REDD vs no REDD (PA),1.8,12.6,4.9,precipitation
+VCS1622,forestInt,REDD vs no REDD (PA),9.1,27.1,11.2,human_footprint
+VCS1654,forestInt,REDD vs no REDD (PA),0.7,7.8,0,human_footprint
+VCS1672,forestInt,REDD vs no REDD (PA),2.3,14.2,0.8,elevation
+VCS1686,forestInt,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS1689,forestInt,REDD vs no REDD (PA),7.6,24.8,13.2,accessibility
+VCS1775,forestInt,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS1811,forestInt,REDD vs no REDD (PA),1.5,11.7,0.3,aboveground_biomass_2000
+VCS1881,forestInt,REDD vs no REDD (PA),5.7,21.7,1.2,human_footprint
+VCS1897,forestInt,REDD vs no REDD (PA),0,1.9,0,population_density
+VCS1953,forestInt,REDD vs no REDD (PA),1.1,10.2,0,precipitation
+VCS2084,forestInt,REDD vs no REDD (PA),NA,NA,NA,NA
+VCS2252,forestInt,REDD vs no REDD (PA),3.6,17.5,5.4,elevation
+VCS2373,forestInt,REDD vs no REDD (PA),0.2,4.6,0,human_footprint
+VCS2403,forestInt,REDD vs no REDD (PA),19.3,38.4,9,human_footprint
+VCS2502,forestInt,REDD vs no REDD (PA),0.1,3.3,0,precipitation
+VCS2508,forestInt,REDD vs no REDD (PA),5.9,22.2,11,population_density
+VCS2551,forestInt,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS2872,forestInt,REDD vs no REDD (PA),18.7,37.8,26.5,precipitation
+VCS3506,forestInt,REDD vs no REDD (PA),6.3,22.8,4.1,human_footprint
+VCS612,forestInt,REDD vs no REDD (PA),0.1,2.8,0,aboveground_biomass_2000
+VCS674,forestInt,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS875,forestInt,REDD vs no REDD (PA),0.1,3.1,0,precipitation
+VCS904,forestInt,REDD vs no REDD (PA),1.3,11,1.7,elevation
+VCS963,forestInt,REDD vs no REDD (PA),5.4,21.2,0,precipitation
+VCS977,forestInt,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS981,forestInt,REDD vs no REDD (PA),9.4,27.4,12.2,human_footprint
+ACCUEOP101157,forestFrag,REDD vs no REDD (PA),2.9,15.8,0,elevation
+ACCUEOP101164,forestFrag,REDD vs no REDD (PA),10.3,28.7,10.6,elevation
+ACR268,forestFrag,REDD vs no REDD (PA),22.3,41.1,25.4,human_footprint
+ER53,forestFrag,REDD vs no REDD (PA),7.1,24,10.5,gdp
+ER55,forestFrag,REDD vs no REDD (PA),6,22.3,0,human_footprint
+ER67,forestFrag,REDD vs no REDD (PA),NA,NA,NA,accessibility
+VCS1112,forestFrag,REDD vs no REDD (PA),47.7,60.2,54.5,precipitation
+VCS1113,forestFrag,REDD vs no REDD (PA),0,1.6,0,precipitation
+VCS1115,forestFrag,REDD vs no REDD (PA),16.2,35.3,25,human_footprint
+VCS1215,forestFrag,REDD vs no REDD (PA),1.4,11.3,0,aboveground_biomass_2000
+VCS1326,forestFrag,REDD vs no REDD (PA),1,9.4,0,human_footprint
+VCS1399,forestFrag,REDD vs no REDD (PA),2.4,14.4,0,accessibility
+VCS1532,forestFrag,REDD vs no REDD (PA),0.4,6.1,0,gdp
+VCS1571,forestFrag,REDD vs no REDD (PA),5.6,21.6,14.8,precipitation
+VCS1622,forestFrag,REDD vs no REDD (PA),33.2,49.9,37.6,gdp
+VCS1654,forestFrag,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS1686,forestFrag,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS1689,forestFrag,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS1775,forestFrag,REDD vs no REDD (PA),0.1,2.3,0,gdp
+VCS1811,forestFrag,REDD vs no REDD (PA),3.5,17.2,5.8,human_footprint
+VCS1881,forestFrag,REDD vs no REDD (PA),10.1,28.4,8.6,elevation
+VCS1897,forestFrag,REDD vs no REDD (PA),25.7,44,31.6,precipitation
+VCS1953,forestFrag,REDD vs no REDD (PA),91.3,91.9,90.5,precipitation
+VCS2084,forestFrag,REDD vs no REDD (PA),NA,NA,NA,NA
+VCS2252,forestFrag,REDD vs no REDD (PA),0.9,9.3,0,elevation
+VCS2373,forestFrag,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS2403,forestFrag,REDD vs no REDD (PA),40.1,54.9,34.3,precipitation
+VCS2502,forestFrag,REDD vs no REDD (PA),2.4,14.5,4.3,precipitation
+VCS2508,forestFrag,REDD vs no REDD (PA),0.4,6.2,0,elevation
+VCS2551,forestFrag,REDD vs no REDD (PA),6.4,22.9,0,elevation
+VCS2872,forestFrag,REDD vs no REDD (PA),27,45.1,35.2,precipitation
+VCS3506,forestFrag,REDD vs no REDD (PA),0.1,2.8,0,accessibility
+VCS674,forestFrag,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS875,forestFrag,REDD vs no REDD (PA),32.7,49.5,41.3,precipitation
+VCS904,forestFrag,REDD vs no REDD (PA),27.1,45.2,30.9,slope
+VCS963,forestFrag,REDD vs no REDD (PA),26.2,44.4,27.8,precipitation
+VCS977,forestFrag,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS981,forestFrag,REDD vs no REDD (PA),0.9,9.1,0,slope
+ACCUEOP100756,canopy_height,REDD vs no REDD (PA),3.3,16.9,0,human_footprint
+ACCUEOP100841,canopy_height,REDD vs no REDD (PA),NA,NA,NA,precipitation
+ACCUEOP100898,canopy_height,REDD vs no REDD (PA),10,28.3,7.3,human_footprint
+ACCUEOP100964,canopy_height,REDD vs no REDD (PA),NA,NA,NA,accessibility
+ACCUEOP101062,canopy_height,REDD vs no REDD (PA),1.4,11.1,0,gdp
+ACCUEOP101086,canopy_height,REDD vs no REDD (PA),0,2,0,gdp
+ACCUEOP101088,canopy_height,REDD vs no REDD (PA),38.2,53.6,38,precipitation
+ACCUEOP101141,canopy_height,REDD vs no REDD (PA),0.5,6.9,0,elevation
+ACCUEOP101157,canopy_height,REDD vs no REDD (PA),2.7,15.3,4,elevation
+ACCUEOP101164,canopy_height,REDD vs no REDD (PA),1.2,10.5,0,elevation
+ACCUERF105144,canopy_height,REDD vs no REDD (PA),1.7,12.3,0,precipitation
+ACR268,canopy_height,REDD vs no REDD (PA),6.9,23.8,3.1,human_footprint
+ER53,canopy_height,REDD vs no REDD (PA),3.1,16.2,1.2,gdp
+ER55,canopy_height,REDD vs no REDD (PA),2.7,15.4,0,gdp
+ER67,canopy_height,REDD vs no REDD (PA),2.1,13.5,0,slope
+ER99,canopy_height,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS1112,canopy_height,REDD vs no REDD (PA),3.7,17.7,4.6,elevation
+VCS1113,canopy_height,REDD vs no REDD (PA),6.9,23.8,13.6,population_density
+VCS1115,canopy_height,REDD vs no REDD (PA),6.7,23.5,11.6,aboveground_biomass_2000
+VCS1215,canopy_height,REDD vs no REDD (PA),40.3,55,38.6,aboveground_biomass_2000
+VCS1326,canopy_height,REDD vs no REDD (PA),4.3,19.2,0,human_footprint
+VCS1399,canopy_height,REDD vs no REDD (PA),1.8,12.6,0,accessibility
+VCS1408,canopy_height,REDD vs no REDD (PA),8,25.4,8,elevation
+VCS1532,canopy_height,REDD vs no REDD (PA),7.6,24.8,13.5,population_density
+VCS1571,canopy_height,REDD vs no REDD (PA),4.7,19.8,12.8,precipitation
+VCS1622,canopy_height,REDD vs no REDD (PA),2.5,14.8,0,human_footprint
+VCS1654,canopy_height,REDD vs no REDD (PA),0,0.3,0,elevation
+VCS1672,canopy_height,REDD vs no REDD (PA),2.8,15.6,2.5,precipitation
+VCS1686,canopy_height,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS1689,canopy_height,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS1775,canopy_height,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS1811,canopy_height,REDD vs no REDD (PA),0,1.7,0,aboveground_biomass_2000
+VCS1881,canopy_height,REDD vs no REDD (PA),5.6,21.6,1.1,human_footprint
+VCS1897,canopy_height,REDD vs no REDD (PA),0.5,6.6,0,human_footprint
+VCS1953,canopy_height,REDD vs no REDD (PA),1,9.4,0,precipitation
+VCS2084,canopy_height,REDD vs no REDD (PA),NA,NA,NA,NA
+VCS2252,canopy_height,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS2373,canopy_height,REDD vs no REDD (PA),0.8,8.6,0,elevation
+VCS2403,canopy_height,REDD vs no REDD (PA),50.8,62.3,45.7,human_footprint
+VCS2502,canopy_height,REDD vs no REDD (PA),1,9.7,0,elevation
+VCS2508,canopy_height,REDD vs no REDD (PA),1,9.4,0,population_density
+VCS2551,canopy_height,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS2872,canopy_height,REDD vs no REDD (PA),0,0.6,0,precipitation
+VCS3506,canopy_height,REDD vs no REDD (PA),0.4,6,0,aboveground_biomass_2000
+VCS562,canopy_height,REDD vs no REDD (PA),NA,NA,NA,elevation
+VCS612,canopy_height,REDD vs no REDD (PA),25.9,44.2,38.3,precipitation
+VCS674,canopy_height,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS875,canopy_height,REDD vs no REDD (PA),0.6,7.6,0,population_density
+VCS904,canopy_height,REDD vs no REDD (PA),0,1.6,0,elevation
+VCS963,canopy_height,REDD vs no REDD (PA),14.7,33.7,13.6,precipitation
+VCS977,canopy_height,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS981,canopy_height,REDD vs no REDD (PA),1.5,11.8,0,elevation
+ACCUEOP101157,carbon_flux,REDD vs no REDD (PA),0.6,7.4,0,aboveground_biomass_2000
+ACCUEOP101164,carbon_flux,REDD vs no REDD (PA),0.7,8,0,slope
+ACR268,carbon_flux,REDD vs no REDD (PA),5.3,21,0,human_footprint
+ER53,carbon_flux,REDD vs no REDD (PA),0,0.1,0,human_footprint
+ER55,carbon_flux,REDD vs no REDD (PA),0.8,8.7,0,human_footprint
+ER67,carbon_flux,REDD vs no REDD (PA),5.4,21.1,0,elevation
+ER99,carbon_flux,REDD vs no REDD (PA),4.8,20.1,0,elevation
+VCS1112,carbon_flux,REDD vs no REDD (PA),0.2,4.9,0,elevation
+VCS1113,carbon_flux,REDD vs no REDD (PA),0.1,3.2,0,elevation
+VCS1115,carbon_flux,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS1215,carbon_flux,REDD vs no REDD (PA),34.2,50.7,32.3,slope
+VCS1326,carbon_flux,REDD vs no REDD (PA),0,2,0,human_footprint
+VCS1399,carbon_flux,REDD vs no REDD (PA),7.9,25.3,13.1,elevation
+VCS1532,carbon_flux,REDD vs no REDD (PA),12.1,30.8,17.8,gdp
+VCS1571,carbon_flux,REDD vs no REDD (PA),11.5,30.1,24.1,precipitation
+VCS1622,carbon_flux,REDD vs no REDD (PA),1.6,12,0,human_footprint
+VCS1654,carbon_flux,REDD vs no REDD (PA),0,1.4,0,human_footprint
+VCS1686,carbon_flux,REDD vs no REDD (PA),0,0.7,0,elevation
+VCS1689,carbon_flux,REDD vs no REDD (PA),2.3,14.2,0,human_footprint
+VCS1775,carbon_flux,REDD vs no REDD (PA),0,0.9,0,gdp
+VCS1811,carbon_flux,REDD vs no REDD (PA),2.3,14.3,3.1,human_footprint
+VCS1881,carbon_flux,REDD vs no REDD (PA),0,1.5,0,slope
+VCS1897,carbon_flux,REDD vs no REDD (PA),0.1,2.5,0,population_density
+VCS1953,carbon_flux,REDD vs no REDD (PA),3,16.2,0,precipitation
+VCS2084,carbon_flux,REDD vs no REDD (PA),NA,NA,NA,NA
+VCS2252,carbon_flux,REDD vs no REDD (PA),0.8,8.6,0,elevation
+VCS2373,carbon_flux,REDD vs no REDD (PA),2.3,14.3,2.4,accessibility
+VCS2403,carbon_flux,REDD vs no REDD (PA),18.7,37.8,8.2,precipitation
+VCS2502,carbon_flux,REDD vs no REDD (PA),0,0.8,0,precipitation
+VCS2508,carbon_flux,REDD vs no REDD (PA),1.8,12.7,0.1,population_density
+VCS2551,carbon_flux,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS2872,carbon_flux,REDD vs no REDD (PA),9.1,27,13.5,precipitation
+VCS3506,carbon_flux,REDD vs no REDD (PA),1.9,13,0,aboveground_biomass_2000
+VCS674,carbon_flux,REDD vs no REDD (PA),NA,NA,NA,precipitation
+VCS875,carbon_flux,REDD vs no REDD (PA),0.6,7.6,0,population_density
+VCS904,carbon_flux,REDD vs no REDD (PA),0.4,5.8,0,human_footprint
+VCS963,carbon_flux,REDD vs no REDD (PA),0.6,7.5,0,precipitation
+VCS977,carbon_flux,REDD vs no REDD (PA),0.6,7.2,0,accessibility
+VCS981,carbon_flux,REDD vs no REDD (PA),4.5,19.4,2.4,human_footprint
+ACCUEOP100521,biodIntact2015,REDD vs no REDD,26.9,45,28,accessibility
+ACCUEOP100542,biodIntact2015,REDD vs no REDD,0,1,0,precipitation
+ACCUEOP100555,biodIntact2015,REDD vs no REDD,6.9,23.8,0.5,elevation
+ACCUEOP100562,biodIntact2015,REDD vs no REDD,1.8,12.7,0,human_footprint
+ACCUEOP100568,biodIntact2015,REDD vs no REDD,4.4,19.4,8.7,aboveground_biomass_2000
+ACCUEOP100579,biodIntact2015,REDD vs no REDD,12.2,30.9,13.2,accessibility
+ACCUEOP100580,biodIntact2015,REDD vs no REDD,NA,NA,NA,accessibility
+ACCUEOP100628,biodIntact2015,REDD vs no REDD,0.1,2.6,0,precipitation
+ACCUEOP100631,biodIntact2015,REDD vs no REDD,0,0.4,0,precipitation
+ACCUEOP100633,biodIntact2015,REDD vs no REDD,5,20.5,8.4,gdp
+ACCUEOP100635,biodIntact2015,REDD vs no REDD,5.9,22.1,11.8,slope
+ACCUEOP100653,biodIntact2015,REDD vs no REDD,NA,NA,NA,precipitation
+ACCUEOP100655,biodIntact2015,REDD vs no REDD,0.6,7.5,0,human_footprint
+ACCUEOP100683,biodIntact2015,REDD vs no REDD,3,16.1,3.4,aboveground_biomass_2000
+ACCUEOP100756,biodIntact2015,REDD vs no REDD,8.5,26.2,16.3,accessibility
+ACCUEOP100800,biodIntact2015,REDD vs no REDD,NA,NA,NA,precipitation
+ACCUEOP100805,biodIntact2015,REDD vs no REDD,0.3,5.6,0,gdp
+ACCUEOP100810,biodIntact2015,REDD vs no REDD,0.1,3.1,0,gdp
+ACCUEOP100822,biodIntact2015,REDD vs no REDD,10,28.2,10.3,gdp
+ACCUEOP100828,biodIntact2015,REDD vs no REDD,7.8,25.1,0,elevation
+ACCUEOP100841,biodIntact2015,REDD vs no REDD,0,2.2,0,precipitation
+ACCUEOP100842,biodIntact2015,REDD vs no REDD,4.4,19.3,13.9,precipitation
+ACCUEOP100847,biodIntact2015,REDD vs no REDD,NA,NA,NA,precipitation
+ACCUEOP100881,biodIntact2015,REDD vs no REDD,1.1,10.2,0,aboveground_biomass_2000
+ACCUEOP100883,biodIntact2015,REDD vs no REDD,NA,NA,NA,precipitation
+ACCUEOP100898,biodIntact2015,REDD vs no REDD,4.4,19.2,0,precipitation
+ACCUEOP100964,biodIntact2015,REDD vs no REDD,NA,NA,NA,elevation
+ACCUEOP101055,biodIntact2015,REDD vs no REDD,3.6,17.6,4.4,elevation
+ACCUEOP101056,biodIntact2015,REDD vs no REDD,32.7,49.5,29.6,gdp
+ACCUEOP101058,biodIntact2015,REDD vs no REDD,0.3,5.6,0,gdp
+ACCUEOP101059,biodIntact2015,REDD vs no REDD,3.5,17.4,7.6,precipitation
+ACCUEOP101060,biodIntact2015,REDD vs no REDD,NA,NA,NA,accessibility
+ACCUEOP101062,biodIntact2015,REDD vs no REDD,0.1,2.7,0,human_footprint
+ACCUEOP101086,biodIntact2015,REDD vs no REDD,0.9,9.1,1.5,gdp
+ACCUEOP101087,biodIntact2015,REDD vs no REDD,1.6,11.9,0,gdp
+ACCUEOP101088,biodIntact2015,REDD vs no REDD,NA,NA,NA,precipitation
+ACCUEOP101089,biodIntact2015,REDD vs no REDD,0.3,5.7,0,accessibility
+ACCUEOP101141,biodIntact2015,REDD vs no REDD,0.1,2.9,0,aboveground_biomass_2000
+ACCUEOP101157,biodIntact2015,REDD vs no REDD,0.8,8.8,2.5,aboveground_biomass_2000
+ACCUEOP101164,biodIntact2015,REDD vs no REDD,0.1,2.5,0,aboveground_biomass_2000
+ACCUEOP101233,biodIntact2015,REDD vs no REDD,1.2,10.6,0,accessibility
+ACCUEOP101241,biodIntact2015,REDD vs no REDD,28.7,46.5,38.1,slope
+ACCUERF101645,biodIntact2015,REDD vs no REDD,5.6,21.5,13,accessibility
+ACCUERF101920,biodIntact2015,REDD vs no REDD,3.7,17.8,10.1,gdp
+ACCUERF102109,biodIntact2015,REDD vs no REDD,13,31.9,23.7,elevation
+ACCUERF103323,biodIntact2015,REDD vs no REDD,2.3,14.3,2.2,precipitation
+ACCUERF105144,biodIntact2015,REDD vs no REDD,13.4,32.3,23.4,precipitation
+ACCUERF111260,biodIntact2015,REDD vs no REDD,0,1.1,0,elevation
+ACCUERF121207,biodIntact2015,REDD vs no REDD,0,1.7,0,aboveground_biomass_2000
+ACCUERF140014,biodIntact2015,REDD vs no REDD,0.8,8.6,0,elevation
+ACCUERF157950,biodIntact2015,REDD vs no REDD,24.6,43,31.3,accessibility
+ACCUERF160737,biodIntact2015,REDD vs no REDD,1.5,11.4,0,precipitation
+ACR268,biodIntact2015,REDD vs no REDD,3.4,17,12.3,population_density
+ACR269,biodIntact2015,REDD vs no REDD,5.4,21.2,13.6,precipitation
+ACR287,biodIntact2015,REDD vs no REDD,4.8,20.1,0,human_footprint
+ER102,biodIntact2015,REDD vs no REDD,38.7,53.9,48.2,aboveground_biomass_2000
+ER117,biodIntact2015,REDD vs no REDD,0.5,6.6,0,elevation
+ER118,biodIntact2015,REDD vs no REDD,15.6,34.8,25.5,aboveground_biomass_2000
+ER148,biodIntact2015,REDD vs no REDD,NA,NA,NA,accessibility
+ER53,biodIntact2015,REDD vs no REDD,4.8,20.1,11.8,aboveground_biomass_2000
+ER55,biodIntact2015,REDD vs no REDD,0.4,5.9,0,aboveground_biomass_2000
+ER67,biodIntact2015,REDD vs no REDD,14.5,33.5,26.4,precipitation
+ER99,biodIntact2015,REDD vs no REDD,NA,NA,NA,precipitation
+VCS1112,biodIntact2015,REDD vs no REDD,7.9,25.4,17.4,precipitation
+VCS1113,biodIntact2015,REDD vs no REDD,24.8,43.2,34.5,precipitation
+VCS1115,biodIntact2015,REDD vs no REDD,5.5,21.3,0,human_footprint
+VCS1122,biodIntact2015,REDD vs no REDD,10.8,29.3,21.5,accessibility
+VCS1175,biodIntact2015,REDD vs no REDD,0.6,7.7,0,aboveground_biomass_2000
+VCS1215,biodIntact2015,REDD vs no REDD,1.1,9.9,0,precipitation
+VCS1218,biodIntact2015,REDD vs no REDD,9,26.9,9,elevation
+VCS1311,biodIntact2015,REDD vs no REDD,4.8,20.1,3.7,aboveground_biomass_2000
+VCS1325,biodIntact2015,REDD vs no REDD,19.7,38.7,22.2,human_footprint
+VCS1326,biodIntact2015,REDD vs no REDD,1.5,11.5,0,precipitation
+VCS1329,biodIntact2015,REDD vs no REDD,2.1,13.5,2.1,aboveground_biomass_2000
+VCS1359,biodIntact2015,REDD vs no REDD,47.4,60,57.1,elevation
+VCS1390,biodIntact2015,REDD vs no REDD,3.2,16.6,8.8,elevation
+VCS1392,biodIntact2015,REDD vs no REDD,6.9,23.8,16.7,precipitation
+VCS1396,biodIntact2015,REDD vs no REDD,0,0.2,0,aboveground_biomass_2000
+VCS1398,biodIntact2015,REDD vs no REDD,3.1,16.5,0,elevation
+VCS1399,biodIntact2015,REDD vs no REDD,2.1,13.7,4.5,slope
+VCS1400,biodIntact2015,REDD vs no REDD,1.2,10.6,3.7,aboveground_biomass_2000
+VCS1403,biodIntact2015,REDD vs no REDD,14.4,33.5,27.5,accessibility
+VCS1408,biodIntact2015,REDD vs no REDD,2.2,13.9,0,accessibility
+VCS1498,biodIntact2015,REDD vs no REDD,3.7,17.7,0.9,precipitation
+VCS1532,biodIntact2015,REDD vs no REDD,1.9,12.9,5.3,slope
+VCS1571,biodIntact2015,REDD vs no REDD,18.8,37.9,30.9,accessibility
+VCS1622,biodIntact2015,REDD vs no REDD,2.8,15.6,8.6,slope
+VCS1654,biodIntact2015,REDD vs no REDD,84.5,86.3,85.2,precipitation
+VCS1672,biodIntact2015,REDD vs no REDD,26.5,44.7,38.8,precipitation
+VCS1674,biodIntact2015,REDD vs no REDD,0,0.2,0,precipitation
+VCS1686,biodIntact2015,REDD vs no REDD,1.2,10.2,2.3,precipitation
+VCS1689,biodIntact2015,REDD vs no REDD,0.6,7.6,0,human_footprint
+VCS1811,biodIntact2015,REDD vs no REDD,3.1,16.4,8.3,accessibility
+VCS1848,biodIntact2015,REDD vs no REDD,0,1.2,0,gdp
+VCS1881,biodIntact2015,REDD vs no REDD,7.2,24.2,5.8,elevation
+VCS1897,biodIntact2015,REDD vs no REDD,0.1,2.8,0,accessibility
+VCS1953,biodIntact2015,REDD vs no REDD,0.9,9.2,3,precipitation
+VCS2084,biodIntact2015,REDD vs no REDD,0,0.2,0,precipitation
+VCS2252,biodIntact2015,REDD vs no REDD,19.4,38.5,33.2,precipitation
+VCS2293,biodIntact2015,REDD vs no REDD,0.9,9.1,0,aboveground_biomass_2000
+VCS2317,biodIntact2015,REDD vs no REDD,10.2,28.5,14.6,population_density
+VCS2324,biodIntact2015,REDD vs no REDD,13.9,32.9,6.2,precipitation
+VCS2373,biodIntact2015,REDD vs no REDD,36.8,52.5,41.4,elevation
+VCS2403,biodIntact2015,REDD vs no REDD,23.6,42.3,32,precipitation
+VCS2502,biodIntact2015,REDD vs no REDD,43.2,57.1,52.3,gdp
+VCS2508,biodIntact2015,REDD vs no REDD,22.8,41.6,31.7,elevation
+VCS2510,biodIntact2015,REDD vs no REDD,8.9,26.7,15.6,aboveground_biomass_2000
+VCS2551,biodIntact2015,REDD vs no REDD,20.6,39.6,31.9,precipitation
+VCS2566,biodIntact2015,REDD vs no REDD,42.4,56.6,45.7,precipitation
+VCS2611,biodIntact2015,REDD vs no REDD,42.4,56.6,52.5,elevation
+VCS2872,biodIntact2015,REDD vs no REDD,17.3,36.4,28.1,human_footprint
+VCS3506,biodIntact2015,REDD vs no REDD,6.2,22.6,11.3,aboveground_biomass_2000
+VCS562,biodIntact2015,REDD vs no REDD,11.3,29.9,7.4,precipitation
+VCS612,biodIntact2015,REDD vs no REDD,12.4,31.2,20.9,human_footprint
+VCS674,biodIntact2015,REDD vs no REDD,4.4,19.4,9.6,precipitation
+VCS832,biodIntact2015,REDD vs no REDD,0,0.9,0,precipitation
+VCS875,biodIntact2015,REDD vs no REDD,9.6,27.7,22.2,accessibility
+VCS904,biodIntact2015,REDD vs no REDD,11.1,29.6,16.3,population_density
+VCS944,biodIntact2015,REDD vs no REDD,3.4,17,0,accessibility
+VCS953,biodIntact2015,REDD vs no REDD,1,9.7,0,elevation
+VCS963,biodIntact2015,REDD vs no REDD,4.6,19.7,11.4,elevation
+VCS977,biodIntact2015,REDD vs no REDD,3.9,18.2,11.3,precipitation
+VCS981,biodIntact2015,REDD vs no REDD,50.2,62,58,accessibility
+VCS999,biodIntact2015,REDD vs no REDD,0.4,6,0,elevation
+ACCUEOP100542,forestInt,REDD vs no REDD,4.2,18.9,4.3,precipitation
+ACCUEOP100555,forestInt,REDD vs no REDD,0.4,6.3,0,accessibility
+ACCUEOP101157,forestInt,REDD vs no REDD,1,9.7,3.5,aboveground_biomass_2000
+ACCUEOP101164,forestInt,REDD vs no REDD,19.4,38.5,30.5,aboveground_biomass_2000
+ACR268,forestInt,REDD vs no REDD,1.7,12.3,7.3,elevation
+ACR269,forestInt,REDD vs no REDD,15.1,34.2,28,precipitation
+ACR287,forestInt,REDD vs no REDD,9.1,27.1,8.9,slope
+ER102,forestInt,REDD vs no REDD,0.5,6.6,0,aboveground_biomass_2000
+ER117,forestInt,REDD vs no REDD,22.2,41,33.8,human_footprint
+ER118,forestInt,REDD vs no REDD,4.4,19.2,7.6,aboveground_biomass_2000
+ER148,forestInt,REDD vs no REDD,0,0.4,0,aboveground_biomass_2000
+ER53,forestInt,REDD vs no REDD,2.6,14.9,6.1,aboveground_biomass_2000
+ER55,forestInt,REDD vs no REDD,0.2,4.2,0,aboveground_biomass_2000
+ER67,forestInt,REDD vs no REDD,3.9,18.3,9.3,accessibility
+ER99,forestInt,REDD vs no REDD,NA,NA,NA,precipitation
+VCS1112,forestInt,REDD vs no REDD,14.6,33.7,26.7,precipitation
+VCS1113,forestInt,REDD vs no REDD,18.1,37.2,27.5,precipitation
+VCS1115,forestInt,REDD vs no REDD,2.1,13.5,0,human_footprint
+VCS1122,forestInt,REDD vs no REDD,8.5,26.2,18,aboveground_biomass_2000
+VCS1175,forestInt,REDD vs no REDD,3.3,16.9,7.8,accessibility
+VCS1215,forestInt,REDD vs no REDD,15.7,34.8,17.8,precipitation
+VCS1218,forestInt,REDD vs no REDD,10.5,28.9,11.5,elevation
+VCS1311,forestInt,REDD vs no REDD,2.4,14.4,0,aboveground_biomass_2000
+VCS1325,forestInt,REDD vs no REDD,50.1,61.9,52.3,accessibility
+VCS1326,forestInt,REDD vs no REDD,16.3,35.5,8.4,precipitation
+VCS1329,forestInt,REDD vs no REDD,28,45.9,39,accessibility
+VCS1359,forestInt,REDD vs no REDD,0,0.2,0,precipitation
+VCS1390,forestInt,REDD vs no REDD,0.7,8,0,elevation
+VCS1392,forestInt,REDD vs no REDD,26.7,44.9,39.9,human_footprint
+VCS1396,forestInt,REDD vs no REDD,0.2,4.4,0,precipitation
+VCS1398,forestInt,REDD vs no REDD,10.7,29.2,6.1,elevation
+VCS1399,forestInt,REDD vs no REDD,15.6,34.7,28,slope
+VCS1400,forestInt,REDD vs no REDD,0.3,5.3,0,elevation
+VCS1403,forestInt,REDD vs no REDD,0.7,7.9,0,human_footprint
+VCS1408,forestInt,REDD vs no REDD,0.4,6.4,0,elevation
+VCS1498,forestInt,REDD vs no REDD,21.9,40.7,28.9,human_footprint
+VCS1532,forestInt,REDD vs no REDD,6.6,23.3,16.7,slope
+VCS1571,forestInt,REDD vs no REDD,NA,NA,NA,precipitation
+VCS1622,forestInt,REDD vs no REDD,3.4,17,10.1,precipitation
+VCS1654,forestInt,REDD vs no REDD,2.3,14.2,2.8,precipitation
+VCS1672,forestInt,REDD vs no REDD,1,9.7,0,precipitation
+VCS1674,forestInt,REDD vs no REDD,0.8,8.6,0,precipitation
+VCS1686,forestInt,REDD vs no REDD,1.8,12.8,5.1,aboveground_biomass_2000
+VCS1689,forestInt,REDD vs no REDD,2.2,13.8,1.4,elevation
+VCS1811,forestInt,REDD vs no REDD,4,18.5,10.6,precipitation
+VCS1848,forestInt,REDD vs no REDD,37.2,52.8,38.7,gdp
+VCS1881,forestInt,REDD vs no REDD,9.8,28,10.5,precipitation
+VCS1897,forestInt,REDD vs no REDD,2.2,13.8,0,precipitation
+VCS1953,forestInt,REDD vs no REDD,9.6,27.7,22.8,elevation
+VCS2084,forestInt,REDD vs no REDD,1.9,12.9,9.3,precipitation
+VCS2252,forestInt,REDD vs no REDD,6.3,22.7,16,precipitation
+VCS2293,forestInt,REDD vs no REDD,4.6,19.7,4.6,human_footprint
+VCS2317,forestInt,REDD vs no REDD,19.4,38.5,26.8,slope
+VCS2324,forestInt,REDD vs no REDD,2,13.4,0,aboveground_biomass_2000
+VCS2373,forestInt,REDD vs no REDD,10.4,28.8,11.3,precipitation
+VCS2403,forestInt,REDD vs no REDD,57.2,66.7,61.4,precipitation
+VCS2502,forestInt,REDD vs no REDD,2.8,15.6,5.4,gdp
+VCS2508,forestInt,REDD vs no REDD,6.4,22.9,9.5,elevation
+VCS2510,forestInt,REDD vs no REDD,3.2,16.6,3.9,aboveground_biomass_2000
+VCS2551,forestInt,REDD vs no REDD,1.7,12.4,1,elevation
+VCS2566,forestInt,REDD vs no REDD,4.1,18.7,0,slope
+VCS2611,forestInt,REDD vs no REDD,0.2,4.3,0,elevation
+VCS2872,forestInt,REDD vs no REDD,0.9,8.9,0,human_footprint
+VCS3506,forestInt,REDD vs no REDD,6,22.3,10.9,aboveground_biomass_2000
+VCS612,forestInt,REDD vs no REDD,2.3,14.2,1.2,population_density
+VCS674,forestInt,REDD vs no REDD,3.3,16.8,6.7,aboveground_biomass_2000
+VCS832,forestInt,REDD vs no REDD,31.1,48.3,44.5,human_footprint
+VCS875,forestInt,REDD vs no REDD,42.4,56.5,53.5,accessibility
+VCS904,forestInt,REDD vs no REDD,7,23.9,9.4,human_footprint
+VCS944,forestInt,REDD vs no REDD,8.8,26.6,10.8,precipitation
+VCS953,forestInt,REDD vs no REDD,40.8,55.4,44.4,accessibility
+VCS963,forestInt,REDD vs no REDD,7.4,24.6,16.8,accessibility
+VCS977,forestInt,REDD vs no REDD,18.6,37.7,32.5,human_footprint
+VCS981,forestInt,REDD vs no REDD,3,16.2,6.8,accessibility
+VCS999,forestInt,REDD vs no REDD,4.7,19.8,4.9,elevation
+ACCUEOP100521,forestFrag,REDD vs no REDD,0.4,6.2,0,accessibility
+ACCUEOP100542,forestFrag,REDD vs no REDD,12.3,31,18.8,precipitation
+ACCUEOP100555,forestFrag,REDD vs no REDD,3.7,17.9,0,accessibility
+ACCUEOP100562,forestFrag,REDD vs no REDD,7.1,24,10.4,human_footprint
+ACCUEOP100568,forestFrag,REDD vs no REDD,8.9,26.7,17.1,gdp
+ACCUEOP100579,forestFrag,REDD vs no REDD,0.3,5.3,0,accessibility
+ACCUEOP100580,forestFrag,REDD vs no REDD,3.8,18.1,8.7,precipitation
+ACCUEOP100628,forestFrag,REDD vs no REDD,NA,NA,NA,human_footprint
+ACCUEOP100631,forestFrag,REDD vs no REDD,1.4,11,0,precipitation
+ACCUEOP100633,forestFrag,REDD vs no REDD,2.3,14.3,1.1,aboveground_biomass_2000
+ACCUEOP100635,forestFrag,REDD vs no REDD,7.9,25.3,15.4,elevation
+ACCUEOP100653,forestFrag,REDD vs no REDD,NA,NA,NA,precipitation
+ACCUEOP100655,forestFrag,REDD vs no REDD,0,0.7,0,gdp
+ACCUEOP100683,forestFrag,REDD vs no REDD,8.2,25.8,14.6,elevation
+ACCUEOP100756,forestFrag,REDD vs no REDD,0.5,6.6,0,precipitation
+ACCUEOP100800,forestFrag,REDD vs no REDD,NA,NA,NA,precipitation
+ACCUEOP100805,forestFrag,REDD vs no REDD,3.3,16.8,2.4,human_footprint
+ACCUEOP100810,forestFrag,REDD vs no REDD,0.3,5,0,accessibility
+ACCUEOP100822,forestFrag,REDD vs no REDD,0.2,4.9,0,accessibility
+ACCUEOP100828,forestFrag,REDD vs no REDD,15.3,34.4,12,slope
+ACCUEOP100841,forestFrag,REDD vs no REDD,1.2,10.6,2.7,precipitation
+ACCUEOP100842,forestFrag,REDD vs no REDD,5.1,20.6,15.3,elevation
+ACCUEOP100847,forestFrag,REDD vs no REDD,4,18.4,0,elevation
+ACCUEOP100881,forestFrag,REDD vs no REDD,0.1,2.8,0,precipitation
+ACCUEOP100883,forestFrag,REDD vs no REDD,NA,NA,NA,precipitation
+ACCUEOP100898,forestFrag,REDD vs no REDD,0.6,7.4,0,precipitation
+ACCUEOP100964,forestFrag,REDD vs no REDD,4.3,19.1,11.9,accessibility
+ACCUEOP101055,forestFrag,REDD vs no REDD,4,18.5,5.4,precipitation
+ACCUEOP101056,forestFrag,REDD vs no REDD,33.1,49.8,30.1,gdp
+ACCUEOP101058,forestFrag,REDD vs no REDD,1.4,11.1,0,accessibility
+ACCUEOP101059,forestFrag,REDD vs no REDD,12.5,31.4,23.3,precipitation
+ACCUEOP101060,forestFrag,REDD vs no REDD,0,0.8,0,precipitation
+ACCUEOP101062,forestFrag,REDD vs no REDD,0,1.5,0,human_footprint
+ACCUEOP101086,forestFrag,REDD vs no REDD,2.1,13.6,6.4,human_footprint
+ACCUEOP101087,forestFrag,REDD vs no REDD,9.5,27.6,11.8,elevation
+ACCUEOP101088,forestFrag,REDD vs no REDD,NA,NA,NA,precipitation
+ACCUEOP101089,forestFrag,REDD vs no REDD,0.4,6.2,0,accessibility
+ACCUEOP101141,forestFrag,REDD vs no REDD,2.5,14.9,0,human_footprint
+ACCUEOP101157,forestFrag,REDD vs no REDD,2.5,14.8,8.6,aboveground_biomass_2000
+ACCUEOP101164,forestFrag,REDD vs no REDD,3,16.1,4.9,aboveground_biomass_2000
+ACCUEOP101233,forestFrag,REDD vs no REDD,1.9,12.9,0.6,precipitation
+ACCUEOP101241,forestFrag,REDD vs no REDD,3.2,16.7,3.1,slope
+ACCUERF101645,forestFrag,REDD vs no REDD,4.2,18.9,10.1,slope
+ACCUERF101920,forestFrag,REDD vs no REDD,0.1,3.3,0,gdp
+ACCUERF102109,forestFrag,REDD vs no REDD,28,45.9,39.5,precipitation
+ACCUERF103323,forestFrag,REDD vs no REDD,1.9,13,0.6,precipitation
+ACCUERF105144,forestFrag,REDD vs no REDD,8.8,26.6,16.9,precipitation
+ACCUERF111260,forestFrag,REDD vs no REDD,7.3,24.5,8.7,elevation
+ACCUERF121207,forestFrag,REDD vs no REDD,7.1,24.1,17.1,precipitation
+ACCUERF140014,forestFrag,REDD vs no REDD,4.8,20.1,11.2,precipitation
+ACCUERF157950,forestFrag,REDD vs no REDD,8.1,25.7,9.9,accessibility
+ACCUERF160737,forestFrag,REDD vs no REDD,24,42.5,16.6,precipitation
+ACR268,forestFrag,REDD vs no REDD,7.1,24.2,19.9,elevation
+ACR269,forestFrag,REDD vs no REDD,20.3,39.3,33.7,precipitation
+ACR287,forestFrag,REDD vs no REDD,0.3,5.4,0,slope
+ER102,forestFrag,REDD vs no REDD,1.7,12.2,0.5,aboveground_biomass_2000
+ER117,forestFrag,REDD vs no REDD,0.1,3.8,0,human_footprint
+ER118,forestFrag,REDD vs no REDD,0.6,7.3,0,elevation
+ER148,forestFrag,REDD vs no REDD,NA,NA,NA,precipitation
+ER53,forestFrag,REDD vs no REDD,1,9.6,0.2,aboveground_biomass_2000
+ER55,forestFrag,REDD vs no REDD,2.5,14.8,6.9,elevation
+ER67,forestFrag,REDD vs no REDD,0.6,7.6,0,precipitation
+ER99,forestFrag,REDD vs no REDD,0.2,4,0,elevation
+VCS1112,forestFrag,REDD vs no REDD,0.6,7.5,0,precipitation
+VCS1113,forestFrag,REDD vs no REDD,3.5,17.4,4.3,precipitation
+VCS1115,forestFrag,REDD vs no REDD,NA,NA,NA,precipitation
+VCS1122,forestFrag,REDD vs no REDD,5.4,21.2,12.5,accessibility
+VCS1175,forestFrag,REDD vs no REDD,0.6,7.7,0,accessibility
+VCS1215,forestFrag,REDD vs no REDD,4.5,19.5,0,precipitation
+VCS1218,forestFrag,REDD vs no REDD,32.9,49.7,37.9,elevation
+VCS1311,forestFrag,REDD vs no REDD,26.8,44.9,33.9,precipitation
+VCS1325,forestFrag,REDD vs no REDD,11.1,29.7,10.4,accessibility
+VCS1326,forestFrag,REDD vs no REDD,28.8,46.5,24.5,accessibility
+VCS1329,forestFrag,REDD vs no REDD,23.4,42.1,34.7,aboveground_biomass_2000
+VCS1359,forestFrag,REDD vs no REDD,0.3,5.7,0,precipitation
+VCS1390,forestFrag,REDD vs no REDD,1.4,11.3,3,elevation
+VCS1392,forestFrag,REDD vs no REDD,13.7,32.7,26.4,human_footprint
+VCS1396,forestFrag,REDD vs no REDD,0.4,6.3,0.1,elevation
+VCS1398,forestFrag,REDD vs no REDD,9.7,27.9,4.4,elevation
+VCS1399,forestFrag,REDD vs no REDD,9.4,27.4,19.8,slope
+VCS1400,forestFrag,REDD vs no REDD,2.7,15.3,8.8,elevation
+VCS1403,forestFrag,REDD vs no REDD,1.9,12.9,4.9,human_footprint
+VCS1408,forestFrag,REDD vs no REDD,4.4,19.2,5.3,aboveground_biomass_2000
+VCS1498,forestFrag,REDD vs no REDD,20,39,26.8,human_footprint
+VCS1532,forestFrag,REDD vs no REDD,2.6,15,7.6,slope
+VCS1571,forestFrag,REDD vs no REDD,NA,NA,NA,precipitation
+VCS1622,forestFrag,REDD vs no REDD,14.9,34,28.6,accessibility
+VCS1654,forestFrag,REDD vs no REDD,2.9,16,4.9,precipitation
+VCS1672,forestFrag,REDD vs no REDD,2.7,15.4,6.1,precipitation
+VCS1674,forestFrag,REDD vs no REDD,3.2,16.5,0,precipitation
+VCS1686,forestFrag,REDD vs no REDD,10,28.3,22,aboveground_biomass_2000
+VCS1689,forestFrag,REDD vs no REDD,8.9,26.7,16.3,slope
+VCS1811,forestFrag,REDD vs no REDD,17.2,36.3,30.3,precipitation
+VCS1848,forestFrag,REDD vs no REDD,21.5,40.4,21.9,elevation
+VCS1881,forestFrag,REDD vs no REDD,1.9,13.1,0,precipitation
+VCS1897,forestFrag,REDD vs no REDD,12.8,31.7,20.2,human_footprint
+VCS1953,forestFrag,REDD vs no REDD,21.1,40.1,36.1,precipitation
+VCS2084,forestFrag,REDD vs no REDD,0,1.8,0,precipitation
+VCS2252,forestFrag,REDD vs no REDD,4.2,18.9,11.8,precipitation
+VCS2293,forestFrag,REDD vs no REDD,3.3,16.9,1.3,elevation
+VCS2317,forestFrag,REDD vs no REDD,0.2,4.6,0,slope
+VCS2324,forestFrag,REDD vs no REDD,6.5,23.1,0,aboveground_biomass_2000
+VCS2373,forestFrag,REDD vs no REDD,0.4,6.4,0,slope
+VCS2403,forestFrag,REDD vs no REDD,19.4,38.5,27.4,precipitation
+VCS2502,forestFrag,REDD vs no REDD,2.3,14.1,3.7,gdp
+VCS2508,forestFrag,REDD vs no REDD,0.3,5.6,0,elevation
+VCS2510,forestFrag,REDD vs no REDD,4,18.4,5.9,aboveground_biomass_2000
+VCS2551,forestFrag,REDD vs no REDD,6,22.2,12.1,population_density
+VCS2566,forestFrag,REDD vs no REDD,21.6,40.5,24.9,slope
+VCS2611,forestFrag,REDD vs no REDD,10.2,28.5,21.3,elevation
+VCS2872,forestFrag,REDD vs no REDD,0,0.5,0,precipitation
+VCS3506,forestFrag,REDD vs no REDD,0.7,8.1,0,aboveground_biomass_2000
+VCS562,forestFrag,REDD vs no REDD,27.6,45.5,28.4,precipitation
+VCS612,forestFrag,REDD vs no REDD,2,13.2,0,slope
+VCS674,forestFrag,REDD vs no REDD,0,1.9,0,gdp
+VCS832,forestFrag,REDD vs no REDD,15.9,35,30,precipitation
+VCS875,forestFrag,REDD vs no REDD,32.2,49.1,45.4,accessibility
+VCS904,forestFrag,REDD vs no REDD,4.5,19.6,4.2,population_density
+VCS944,forestFrag,REDD vs no REDD,5.8,21.8,4.9,precipitation
+VCS953,forestFrag,REDD vs no REDD,23.6,42.3,27.5,accessibility
+VCS963,forestFrag,REDD vs no REDD,25.5,43.9,38.3,accessibility
+VCS977,forestFrag,REDD vs no REDD,10.3,28.6,22.6,precipitation
+VCS981,forestFrag,REDD vs no REDD,0.1,3.1,0,accessibility
+VCS999,forestFrag,REDD vs no REDD,0,2.2,0,elevation
+ACCUEOP100521,canopy_height,REDD vs no REDD,0.4,6.2,0,accessibility
+ACCUEOP100542,canopy_height,REDD vs no REDD,12.3,31,18.8,precipitation
+ACCUEOP100555,canopy_height,REDD vs no REDD,3.7,17.9,0,accessibility
+ACCUEOP100562,canopy_height,REDD vs no REDD,7.1,24,10.4,human_footprint
+ACCUEOP100568,canopy_height,REDD vs no REDD,8.9,26.7,17.1,gdp
+ACCUEOP100579,canopy_height,REDD vs no REDD,0.3,5.3,0,accessibility
+ACCUEOP100580,canopy_height,REDD vs no REDD,3.8,18.1,8.7,precipitation
+ACCUEOP100628,canopy_height,REDD vs no REDD,NA,NA,NA,human_footprint
+ACCUEOP100631,canopy_height,REDD vs no REDD,1.4,11,0,precipitation
+ACCUEOP100633,canopy_height,REDD vs no REDD,2.3,14.3,1.1,aboveground_biomass_2000
+ACCUEOP100635,canopy_height,REDD vs no REDD,7.9,25.3,15.4,elevation
+ACCUEOP100653,canopy_height,REDD vs no REDD,NA,NA,NA,precipitation
+ACCUEOP100655,canopy_height,REDD vs no REDD,0,0.7,0,gdp
+ACCUEOP100683,canopy_height,REDD vs no REDD,8.2,25.8,14.6,elevation
+ACCUEOP100756,canopy_height,REDD vs no REDD,0.5,6.6,0,precipitation
+ACCUEOP100800,canopy_height,REDD vs no REDD,NA,NA,NA,precipitation
+ACCUEOP100805,canopy_height,REDD vs no REDD,3.3,16.8,2.4,human_footprint
+ACCUEOP100810,canopy_height,REDD vs no REDD,0.3,5,0,accessibility
+ACCUEOP100822,canopy_height,REDD vs no REDD,0.2,4.9,0,accessibility
+ACCUEOP100828,canopy_height,REDD vs no REDD,15.3,34.4,12,slope
+ACCUEOP100841,canopy_height,REDD vs no REDD,1.2,10.6,2.7,precipitation
+ACCUEOP100842,canopy_height,REDD vs no REDD,5.1,20.6,15.3,elevation
+ACCUEOP100847,canopy_height,REDD vs no REDD,4,18.4,0,elevation
+ACCUEOP100881,canopy_height,REDD vs no REDD,0.1,2.8,0,precipitation
+ACCUEOP100883,canopy_height,REDD vs no REDD,NA,NA,NA,precipitation
+ACCUEOP100898,canopy_height,REDD vs no REDD,0.6,7.4,0,precipitation
+ACCUEOP100964,canopy_height,REDD vs no REDD,4.3,19.1,11.9,accessibility
+ACCUEOP101055,canopy_height,REDD vs no REDD,4,18.5,5.4,precipitation
+ACCUEOP101056,canopy_height,REDD vs no REDD,33.1,49.8,30.1,gdp
+ACCUEOP101058,canopy_height,REDD vs no REDD,1.4,11.1,0,accessibility
+ACCUEOP101059,canopy_height,REDD vs no REDD,12.5,31.4,23.3,precipitation
+ACCUEOP101060,canopy_height,REDD vs no REDD,0,0.8,0,precipitation
+ACCUEOP101062,canopy_height,REDD vs no REDD,0,1.5,0,human_footprint
+ACCUEOP101086,canopy_height,REDD vs no REDD,2.1,13.6,6.4,human_footprint
+ACCUEOP101087,canopy_height,REDD vs no REDD,9.5,27.6,11.8,elevation
+ACCUEOP101088,canopy_height,REDD vs no REDD,NA,NA,NA,precipitation
+ACCUEOP101089,canopy_height,REDD vs no REDD,0.4,6.2,0,accessibility
+ACCUEOP101141,canopy_height,REDD vs no REDD,2.5,14.9,0,human_footprint
+ACCUEOP101157,canopy_height,REDD vs no REDD,2.5,14.8,8.6,aboveground_biomass_2000
+ACCUEOP101164,canopy_height,REDD vs no REDD,3,16.1,4.9,aboveground_biomass_2000
+ACCUEOP101233,canopy_height,REDD vs no REDD,1.9,12.9,0.6,precipitation
+ACCUEOP101241,canopy_height,REDD vs no REDD,3.2,16.7,3.1,slope
+ACCUERF101645,canopy_height,REDD vs no REDD,4.2,18.9,10.1,slope
+ACCUERF101920,canopy_height,REDD vs no REDD,0.1,3.3,0,gdp
+ACCUERF102109,canopy_height,REDD vs no REDD,28,45.9,39.5,precipitation
+ACCUERF103323,canopy_height,REDD vs no REDD,1.9,13,0.6,precipitation
+ACCUERF105144,canopy_height,REDD vs no REDD,8.8,26.6,16.9,precipitation
+ACCUERF111260,canopy_height,REDD vs no REDD,7.3,24.5,8.7,elevation
+ACCUERF121207,canopy_height,REDD vs no REDD,7.1,24.1,17.1,precipitation
+ACCUERF140014,canopy_height,REDD vs no REDD,4.8,20.1,11.2,precipitation
+ACCUERF157950,canopy_height,REDD vs no REDD,8.1,25.7,9.9,accessibility
+ACCUERF160737,canopy_height,REDD vs no REDD,24,42.5,16.6,precipitation
+ACR268,canopy_height,REDD vs no REDD,7.1,24.2,19.9,elevation
+ACR269,canopy_height,REDD vs no REDD,20.3,39.3,33.7,precipitation
+ACR287,canopy_height,REDD vs no REDD,0.3,5.4,0,slope
+ER102,canopy_height,REDD vs no REDD,1.7,12.2,0.5,aboveground_biomass_2000
+ER117,canopy_height,REDD vs no REDD,0.1,3.8,0,human_footprint
+ER118,canopy_height,REDD vs no REDD,0.6,7.3,0,elevation
+ER148,canopy_height,REDD vs no REDD,NA,NA,NA,precipitation
+ER53,canopy_height,REDD vs no REDD,1,9.6,0.2,aboveground_biomass_2000
+ER55,canopy_height,REDD vs no REDD,2.5,14.8,6.9,elevation
+ER67,canopy_height,REDD vs no REDD,0.6,7.6,0,precipitation
+ER99,canopy_height,REDD vs no REDD,0.2,4,0,elevation
+VCS1112,canopy_height,REDD vs no REDD,0.6,7.5,0,precipitation
+VCS1113,canopy_height,REDD vs no REDD,3.5,17.4,4.3,precipitation
+VCS1115,canopy_height,REDD vs no REDD,NA,NA,NA,precipitation
+VCS1122,canopy_height,REDD vs no REDD,5.4,21.2,12.5,accessibility
+VCS1175,canopy_height,REDD vs no REDD,0.6,7.7,0,accessibility
+VCS1215,canopy_height,REDD vs no REDD,4.5,19.5,0,precipitation
+VCS1218,canopy_height,REDD vs no REDD,32.9,49.7,37.9,elevation
+VCS1311,canopy_height,REDD vs no REDD,26.8,44.9,33.9,precipitation
+VCS1325,canopy_height,REDD vs no REDD,11.1,29.7,10.4,accessibility
+VCS1326,canopy_height,REDD vs no REDD,28.8,46.5,24.5,accessibility
+VCS1329,canopy_height,REDD vs no REDD,23.4,42.1,34.7,aboveground_biomass_2000
+VCS1359,canopy_height,REDD vs no REDD,0.3,5.7,0,precipitation
+VCS1390,canopy_height,REDD vs no REDD,1.4,11.3,3,elevation
+VCS1392,canopy_height,REDD vs no REDD,13.7,32.7,26.4,human_footprint
+VCS1396,canopy_height,REDD vs no REDD,0.4,6.3,0.1,elevation
+VCS1398,canopy_height,REDD vs no REDD,9.7,27.9,4.4,elevation
+VCS1399,canopy_height,REDD vs no REDD,9.4,27.4,19.8,slope
+VCS1400,canopy_height,REDD vs no REDD,2.7,15.3,8.8,elevation
+VCS1403,canopy_height,REDD vs no REDD,1.9,12.9,4.9,human_footprint
+VCS1408,canopy_height,REDD vs no REDD,4.4,19.2,5.3,aboveground_biomass_2000
+VCS1498,canopy_height,REDD vs no REDD,20,39,26.8,human_footprint
+VCS1532,canopy_height,REDD vs no REDD,2.6,15,7.6,slope
+VCS1571,canopy_height,REDD vs no REDD,NA,NA,NA,precipitation
+VCS1622,canopy_height,REDD vs no REDD,14.9,34,28.6,accessibility
+VCS1654,canopy_height,REDD vs no REDD,2.9,16,4.9,precipitation
+VCS1672,canopy_height,REDD vs no REDD,2.7,15.4,6.1,precipitation
+VCS1674,canopy_height,REDD vs no REDD,3.2,16.5,0,precipitation
+VCS1686,canopy_height,REDD vs no REDD,10,28.3,22,aboveground_biomass_2000
+VCS1689,canopy_height,REDD vs no REDD,8.9,26.7,16.3,slope
+VCS1811,canopy_height,REDD vs no REDD,17.2,36.3,30.3,precipitation
+VCS1848,canopy_height,REDD vs no REDD,21.5,40.4,21.9,elevation
+VCS1881,canopy_height,REDD vs no REDD,1.9,13.1,0,precipitation
+VCS1897,canopy_height,REDD vs no REDD,12.8,31.7,20.2,human_footprint
+VCS1953,canopy_height,REDD vs no REDD,21.1,40.1,36.1,precipitation
+VCS2084,canopy_height,REDD vs no REDD,0,1.8,0,precipitation
+VCS2252,canopy_height,REDD vs no REDD,4.2,18.9,11.8,precipitation
+VCS2293,canopy_height,REDD vs no REDD,3.3,16.9,1.3,elevation
+VCS2317,canopy_height,REDD vs no REDD,0.2,4.6,0,slope
+VCS2324,canopy_height,REDD vs no REDD,6.5,23.1,0,aboveground_biomass_2000
+VCS2373,canopy_height,REDD vs no REDD,0.4,6.4,0,slope
+VCS2403,canopy_height,REDD vs no REDD,19.4,38.5,27.4,precipitation
+VCS2502,canopy_height,REDD vs no REDD,2.3,14.1,3.7,gdp
+VCS2508,canopy_height,REDD vs no REDD,0.3,5.6,0,elevation
+VCS2510,canopy_height,REDD vs no REDD,4,18.4,5.9,aboveground_biomass_2000
+VCS2551,canopy_height,REDD vs no REDD,6,22.2,12.1,population_density
+VCS2566,canopy_height,REDD vs no REDD,21.6,40.5,24.9,slope
+VCS2611,canopy_height,REDD vs no REDD,10.2,28.5,21.3,elevation
+VCS2872,canopy_height,REDD vs no REDD,0,0.5,0,precipitation
+VCS3506,canopy_height,REDD vs no REDD,0.7,8.1,0,aboveground_biomass_2000
+VCS562,canopy_height,REDD vs no REDD,27.6,45.5,28.4,precipitation
+VCS612,canopy_height,REDD vs no REDD,2,13.2,0,slope
+VCS674,canopy_height,REDD vs no REDD,0,1.9,0,gdp
+VCS832,canopy_height,REDD vs no REDD,15.9,35,30,precipitation
+VCS875,canopy_height,REDD vs no REDD,32.2,49.1,45.4,accessibility
+VCS904,canopy_height,REDD vs no REDD,4.5,19.6,4.2,population_density
+VCS944,canopy_height,REDD vs no REDD,5.8,21.8,4.9,precipitation
+VCS953,canopy_height,REDD vs no REDD,23.6,42.3,27.5,accessibility
+VCS963,canopy_height,REDD vs no REDD,25.5,43.9,38.3,accessibility
+VCS977,canopy_height,REDD vs no REDD,10.3,28.6,22.6,precipitation
+VCS981,canopy_height,REDD vs no REDD,0.1,3.1,0,accessibility
+VCS999,canopy_height,REDD vs no REDD,0,2.2,0,elevation
+ACCUEOP101157,carbon_flux,REDD vs no REDD,1.6,12.1,2.4,elevation
+ACCUEOP101164,carbon_flux,REDD vs no REDD,8.3,25.9,13.5,aboveground_biomass_2000
+ACR268,carbon_flux,REDD vs no REDD,0.1,2.9,0,elevation
+ACR269,carbon_flux,REDD vs no REDD,14.4,33.4,25.2,gdp
+ACR287,carbon_flux,REDD vs no REDD,20,39.1,21.1,slope
+ER102,carbon_flux,REDD vs no REDD,NA,NA,NA,precipitation
+ER117,carbon_flux,REDD vs no REDD,9.2,27.2,18.2,accessibility
+ER118,carbon_flux,REDD vs no REDD,3.2,16.6,4.6,aboveground_biomass_2000
+ER148,carbon_flux,REDD vs no REDD,0,0.6,0,human_footprint
+ER53,carbon_flux,REDD vs no REDD,0.4,6.2,0,aboveground_biomass_2000
+ER55,carbon_flux,REDD vs no REDD,0,1.6,0,aboveground_biomass_2000
+ER67,carbon_flux,REDD vs no REDD,0,2,0,elevation
+ER99,carbon_flux,REDD vs no REDD,NA,NA,NA,precipitation
+VCS1112,carbon_flux,REDD vs no REDD,NA,NA,NA,precipitation
+VCS1113,carbon_flux,REDD vs no REDD,16,35.1,24.8,precipitation
+VCS1115,carbon_flux,REDD vs no REDD,0.1,3.8,0,human_footprint
+VCS1122,carbon_flux,REDD vs no REDD,1.2,10.6,0.7,elevation
+VCS1175,carbon_flux,REDD vs no REDD,NA,NA,NA,precipitation
+VCS1215,carbon_flux,REDD vs no REDD,16.7,35.9,19.2,precipitation
+VCS1218,carbon_flux,REDD vs no REDD,4.1,18.7,0,elevation
+VCS1311,carbon_flux,REDD vs no REDD,8.4,26.1,10.9,aboveground_biomass_2000
+VCS1325,carbon_flux,REDD vs no REDD,40.6,55.3,41.9,accessibility
+VCS1326,carbon_flux,REDD vs no REDD,3.1,16.5,0,precipitation
+VCS1329,carbon_flux,REDD vs no REDD,25.8,44.1,36.8,elevation
+VCS1359,carbon_flux,REDD vs no REDD,1.5,11.5,4.4,precipitation
+VCS1390,carbon_flux,REDD vs no REDD,3.4,17.1,9.4,elevation
+VCS1392,carbon_flux,REDD vs no REDD,0.7,8.2,0,human_footprint
+VCS1396,carbon_flux,REDD vs no REDD,6.5,23.2,18,precipitation
+VCS1398,carbon_flux,REDD vs no REDD,4.8,20,0,accessibility
+VCS1399,carbon_flux,REDD vs no REDD,2.3,14.3,5.2,accessibility
+VCS1400,carbon_flux,REDD vs no REDD,13,31.9,26.7,elevation
+VCS1403,carbon_flux,REDD vs no REDD,23.4,42,36.9,accessibility
+VCS1498,carbon_flux,REDD vs no REDD,26.2,44.5,33.4,human_footprint
+VCS1532,carbon_flux,REDD vs no REDD,0,0.9,0,slope
+VCS1571,carbon_flux,REDD vs no REDD,46.7,59.5,55.3,elevation
+VCS1622,carbon_flux,REDD vs no REDD,0.8,8.7,0.4,precipitation
+VCS1654,carbon_flux,REDD vs no REDD,13.6,32.5,23.6,accessibility
+VCS1674,carbon_flux,REDD vs no REDD,6.2,22.6,0,precipitation
+VCS1686,carbon_flux,REDD vs no REDD,0,0.1,0,aboveground_biomass_2000
+VCS1689,carbon_flux,REDD vs no REDD,1.2,10.5,0,slope
+VCS1811,carbon_flux,REDD vs no REDD,1.4,11.2,2.6,precipitation
+VCS1848,carbon_flux,REDD vs no REDD,2.2,13.9,0,elevation
+VCS1881,carbon_flux,REDD vs no REDD,NA,NA,NA,NA
+VCS1897,carbon_flux,REDD vs no REDD,4.3,19,5.2,precipitation
+VCS1953,carbon_flux,REDD vs no REDD,11.9,30.6,25.5,precipitation
+VCS2084,carbon_flux,REDD vs no REDD,NA,NA,NA,NA
+VCS2252,carbon_flux,REDD vs no REDD,3.6,17.6,10.4,precipitation
+VCS2293,carbon_flux,REDD vs no REDD,2.8,15.7,0,elevation
+VCS2317,carbon_flux,REDD vs no REDD,10.2,28.5,12.5,elevation
+VCS2373,carbon_flux,REDD vs no REDD,22.6,41.4,27.3,precipitation
+VCS2403,carbon_flux,REDD vs no REDD,34.8,51.1,42.6,precipitation
+VCS2502,carbon_flux,REDD vs no REDD,6.6,23.3,14.1,gdp
+VCS2508,carbon_flux,REDD vs no REDD,21.7,40.6,30.5,elevation
+VCS2510,carbon_flux,REDD vs no REDD,0.2,4.5,0,aboveground_biomass_2000
+VCS2551,carbon_flux,REDD vs no REDD,2.2,13.8,2.3,population_density
+VCS2566,carbon_flux,REDD vs no REDD,43.3,57.2,45.7,precipitation
+VCS2611,carbon_flux,REDD vs no REDD,11.4,30,21.2,precipitation
+VCS2872,carbon_flux,REDD vs no REDD,0,0.1,0,elevation
+VCS3506,carbon_flux,REDD vs no REDD,2.4,14.4,1.9,aboveground_biomass_2000
+VCS674,carbon_flux,REDD vs no REDD,9.6,27.7,17.8,precipitation
+VCS832,carbon_flux,REDD vs no REDD,18.6,37.7,32.9,slope
+VCS875,carbon_flux,REDD vs no REDD,35.7,51.7,48.2,accessibility
+VCS944,carbon_flux,REDD vs no REDD,1.7,12.5,0,precipitation
+VCS953,carbon_flux,REDD vs no REDD,41.3,55.8,43.1,accessibility
+VCS963,carbon_flux,REDD vs no REDD,6.2,22.6,14.5,elevation
+VCS977,carbon_flux,REDD vs no REDD,8.4,26,19.8,human_footprint
+VCS981,carbon_flux,REDD vs no REDD,2.8,15.7,6.1,accessibility
+VCS999,carbon_flux,REDD vs no REDD,2.8,15.5,0,elevation
+ACCUEOP101157,biodIntact2015,REDD (PA) vs no REDD,11.7,30.4,9.8,elevation
+ACCUEOP101164,biodIntact2015,REDD (PA) vs no REDD,0.2,4.3,0,aboveground_biomass_2000
+ER102,biodIntact2015,REDD (PA) vs no REDD,44.2,57.8,52.9,aboveground_biomass_2000
+ER130,biodIntact2015,REDD (PA) vs no REDD,3.4,17.1,0,aboveground_biomass_2000
+ER137,biodIntact2015,REDD (PA) vs no REDD,48.6,60.8,44.6,precipitation
+ER139,biodIntact2015,REDD (PA) vs no REDD,10,28.3,0,accessibility
+ER143,biodIntact2015,REDD (PA) vs no REDD,53.3,64.1,55.9,accessibility
+VCS1052,biodIntact2015,REDD (PA) vs no REDD,44.3,57.9,50.2,elevation
+VCS1118,biodIntact2015,REDD (PA) vs no REDD,40.6,55.3,50.2,precipitation
+VCS1122,biodIntact2015,REDD (PA) vs no REDD,3.5,17.4,6.4,precipitation
+VCS1215,biodIntact2015,REDD (PA) vs no REDD,13.3,32.3,18.1,elevation
+VCS1311,biodIntact2015,REDD (PA) vs no REDD,1.9,13,0,human_footprint
+VCS1325,biodIntact2015,REDD (PA) vs no REDD,44.2,57.8,43.1,precipitation
+VCS1392,biodIntact2015,REDD (PA) vs no REDD,15.3,34.4,14.8,slope
+VCS1398,biodIntact2015,REDD (PA) vs no REDD,22.8,41.6,36,precipitation
+VCS1400,biodIntact2015,REDD (PA) vs no REDD,1.6,11.8,3.3,precipitation
+VCS1403,biodIntact2015,REDD (PA) vs no REDD,47.7,60.2,41.5,aboveground_biomass_2000
+VCS1503,biodIntact2015,REDD (PA) vs no REDD,0.1,3.5,0,precipitation
+VCS1532,biodIntact2015,REDD (PA) vs no REDD,0,0.4,0,gdp
+VCS1541,biodIntact2015,REDD (PA) vs no REDD,3.7,17.7,6.4,human_footprint
+VCS1571,biodIntact2015,REDD (PA) vs no REDD,NA,NA,NA,NA
+VCS1622,biodIntact2015,REDD (PA) vs no REDD,2.4,14.4,7,aboveground_biomass_2000
+VCS1650,biodIntact2015,REDD (PA) vs no REDD,0,1.7,0,elevation
+VCS1672,biodIntact2015,REDD (PA) vs no REDD,38.6,53.9,39.8,precipitation
+VCS1674,biodIntact2015,REDD (PA) vs no REDD,0.2,3.9,0,precipitation
+VCS1689,biodIntact2015,REDD (PA) vs no REDD,1,9.6,0,human_footprint
+VCS1748,biodIntact2015,REDD (PA) vs no REDD,4.8,20.1,0,aboveground_biomass_2000
+VCS1775,biodIntact2015,REDD (PA) vs no REDD,0.1,2.3,0,elevation
+VCS1848,biodIntact2015,REDD (PA) vs no REDD,12.3,31.1,26,gdp
+VCS1881,biodIntact2015,REDD (PA) vs no REDD,1.1,9.8,0,precipitation
+VCS1900,biodIntact2015,REDD (PA) vs no REDD,NA,NA,NA,precipitation
+VCS2290,biodIntact2015,REDD (PA) vs no REDD,3.8,17.9,0,human_footprint
+VCS2317,biodIntact2015,REDD (PA) vs no REDD,17.9,37,25.9,slope
+VCS2324,biodIntact2015,REDD (PA) vs no REDD,7.5,24.7,15,accessibility
+VCS2510,biodIntact2015,REDD (PA) vs no REDD,15,34.1,15,accessibility
+VCS2551,biodIntact2015,REDD (PA) vs no REDD,NA,NA,NA,precipitation
+VCS2566,biodIntact2015,REDD (PA) vs no REDD,2.7,15.2,0,precipitation
+VCS3506,biodIntact2015,REDD (PA) vs no REDD,0.9,9.1,0,aboveground_biomass_2000
+VCS674,biodIntact2015,REDD (PA) vs no REDD,8.7,26.5,9.4,human_footprint
+VCS856,biodIntact2015,REDD (PA) vs no REDD,0.7,8.3,0,elevation
+VCS904,biodIntact2015,REDD (PA) vs no REDD,0.2,4.4,0,precipitation
+VCS934,biodIntact2015,REDD (PA) vs no REDD,61.5,69.7,62.6,aboveground_biomass_2000
+VCS944,biodIntact2015,REDD (PA) vs no REDD,12.5,31.3,24,gdp
+VCS963,biodIntact2015,REDD (PA) vs no REDD,14.9,33.9,14.5,precipitation
+ACCUEOP101157,forestInt,REDD (PA) vs no REDD,10.2,28.5,7.4,human_footprint
+ACCUEOP101164,forestInt,REDD (PA) vs no REDD,18.3,37.4,26,aboveground_biomass_2000
+ER102,forestInt,REDD (PA) vs no REDD,1.6,11.9,0.8,aboveground_biomass_2000
+ER130,forestInt,REDD (PA) vs no REDD,7.1,24.1,3.6,aboveground_biomass_2000
+ER137,forestInt,REDD (PA) vs no REDD,45.3,58.6,41.2,precipitation
+ER139,forestInt,REDD (PA) vs no REDD,13.9,32.9,1.4,accessibility
+ER143,forestInt,REDD (PA) vs no REDD,11.9,30.6,13.1,precipitation
+VCS1052,forestInt,REDD (PA) vs no REDD,5.2,20.8,5.1,precipitation
+VCS1118,forestInt,REDD (PA) vs no REDD,10.6,29.1,20.5,aboveground_biomass_2000
+VCS1122,forestInt,REDD (PA) vs no REDD,0.5,7,0,precipitation
+VCS1215,forestInt,REDD (PA) vs no REDD,38.5,53.8,44.6,precipitation
+VCS1311,forestInt,REDD (PA) vs no REDD,27.3,45.3,34.9,population_density
+VCS1325,forestInt,REDD (PA) vs no REDD,0.4,6.3,0,precipitation
+VCS1392,forestInt,REDD (PA) vs no REDD,11.3,29.9,8.7,precipitation
+VCS1398,forestInt,REDD (PA) vs no REDD,4.1,18.7,10.7,human_footprint
+VCS1400,forestInt,REDD (PA) vs no REDD,0.1,3.4,0,elevation
+VCS1403,forestInt,REDD (PA) vs no REDD,52.1,63.2,46.2,aboveground_biomass_2000
+VCS1503,forestInt,REDD (PA) vs no REDD,14.2,33.2,19.8,precipitation
+VCS1532,forestInt,REDD (PA) vs no REDD,0.1,2.6,0,aboveground_biomass_2000
+VCS1541,forestInt,REDD (PA) vs no REDD,NA,NA,NA,accessibility
+VCS1571,forestInt,REDD (PA) vs no REDD,NA,NA,NA,NA
+VCS1622,forestInt,REDD (PA) vs no REDD,2.2,13.9,6.4,human_footprint
+VCS1650,forestInt,REDD (PA) vs no REDD,11.2,29.8,20.9,precipitation
+VCS1672,forestInt,REDD (PA) vs no REDD,1.3,10.8,0,precipitation
+VCS1674,forestInt,REDD (PA) vs no REDD,0.2,4.7,0,accessibility
+VCS1689,forestInt,REDD (PA) vs no REDD,6.3,22.8,9.9,aboveground_biomass_2000
+VCS1748,forestInt,REDD (PA) vs no REDD,23.8,42.4,20.9,gdp
+VCS1775,forestInt,REDD (PA) vs no REDD,0.6,7.7,0,elevation
+VCS1848,forestInt,REDD (PA) vs no REDD,46.8,59.6,56.9,accessibility
+VCS1881,forestInt,REDD (PA) vs no REDD,7.5,24.7,6,precipitation
+VCS1900,forestInt,REDD (PA) vs no REDD,1.3,11,0,elevation
+VCS2290,forestInt,REDD (PA) vs no REDD,1.9,13,0,human_footprint
+VCS2317,forestInt,REDD (PA) vs no REDD,34.2,50.7,42.2,accessibility
+VCS2324,forestInt,REDD (PA) vs no REDD,3.8,17.9,7.3,aboveground_biomass_2000
+VCS2510,forestInt,REDD (PA) vs no REDD,5.4,21.2,0,accessibility
+VCS2551,forestInt,REDD (PA) vs no REDD,0.6,7.5,0,elevation
+VCS2566,forestInt,REDD (PA) vs no REDD,0.8,8.8,0,slope
+VCS3506,forestInt,REDD (PA) vs no REDD,1.5,11.7,0,human_footprint
+VCS674,forestInt,REDD (PA) vs no REDD,NA,NA,NA,precipitation
+VCS856,forestInt,REDD (PA) vs no REDD,1.1,10.1,0,gdp
+VCS904,forestInt,REDD (PA) vs no REDD,19,38.1,23.9,precipitation
+VCS934,forestInt,REDD (PA) vs no REDD,4.7,19.9,0,aboveground_biomass_2000
+VCS944,forestInt,REDD (PA) vs no REDD,16.7,35.9,29.1,human_footprint
+VCS963,forestInt,REDD (PA) vs no REDD,10.9,29.4,8.6,precipitation
+ACCUEOP101157,forestFrag,REDD (PA) vs no REDD,2.1,13.5,0,accessibility
+ACCUEOP101164,forestFrag,REDD (PA) vs no REDD,4.8,20.1,0,accessibility
+ER102,forestFrag,REDD (PA) vs no REDD,6.7,23.4,13.7,aboveground_biomass_2000
+ER130,forestFrag,REDD (PA) vs no REDD,1.6,12.1,0,aboveground_biomass_2000
+ER137,forestFrag,REDD (PA) vs no REDD,43,57,38.8,precipitation
+ER139,forestFrag,REDD (PA) vs no REDD,19.8,38.8,10.3,precipitation
+ER143,forestFrag,REDD (PA) vs no REDD,0.7,7.8,0,precipitation
+VCS1052,forestFrag,REDD (PA) vs no REDD,81.8,84.2,82.1,accessibility
+VCS1118,forestFrag,REDD (PA) vs no REDD,53.3,64,59.4,precipitation
+VCS1122,forestFrag,REDD (PA) vs no REDD,0,1.4,0,precipitation
+VCS1215,forestFrag,REDD (PA) vs no REDD,26.6,44.8,33.1,precipitation
+VCS1311,forestFrag,REDD (PA) vs no REDD,56.5,66.2,59.8,human_footprint
+VCS1325,forestFrag,REDD (PA) vs no REDD,1.1,10.2,0,precipitation
+VCS1392,forestFrag,REDD (PA) vs no REDD,0.3,5.4,0,precipitation
+VCS1398,forestFrag,REDD (PA) vs no REDD,40.9,55.5,51,precipitation
+VCS1400,forestFrag,REDD (PA) vs no REDD,0.5,7.1,0,precipitation
+VCS1503,forestFrag,REDD (PA) vs no REDD,5.1,20.7,2.6,precipitation
+VCS1532,forestFrag,REDD (PA) vs no REDD,1.2,10.4,0,aboveground_biomass_2000
+VCS1541,forestFrag,REDD (PA) vs no REDD,15.1,34.2,20.2,accessibility
+VCS1622,forestFrag,REDD (PA) vs no REDD,8.2,25.7,18.2,aboveground_biomass_2000
+VCS1650,forestFrag,REDD (PA) vs no REDD,4,18.4,6,precipitation
+VCS1674,forestFrag,REDD (PA) vs no REDD,71.2,76.4,74.4,precipitation
+VCS1689,forestFrag,REDD (PA) vs no REDD,39.9,54.8,33,human_footprint
+VCS1748,forestFrag,REDD (PA) vs no REDD,64.7,71.9,61.2,gdp
+VCS1775,forestFrag,REDD (PA) vs no REDD,0.5,6.8,0,gdp
+VCS1848,forestFrag,REDD (PA) vs no REDD,57.3,66.8,64.4,gdp
+VCS1881,forestFrag,REDD (PA) vs no REDD,3.1,16.3,0,human_footprint
+VCS2317,forestFrag,REDD (PA) vs no REDD,2.1,13.5,0,accessibility
+VCS2324,forestFrag,REDD (PA) vs no REDD,30.3,47.7,36.4,gdp
+VCS2510,forestFrag,REDD (PA) vs no REDD,30.4,47.8,32.5,human_footprint
+VCS3506,forestFrag,REDD (PA) vs no REDD,16,35.2,23.9,accessibility
+VCS674,forestFrag,REDD (PA) vs no REDD,63.8,71.2,60.5,accessibility
+VCS856,forestFrag,REDD (PA) vs no REDD,NA,NA,NA,precipitation
+VCS934,forestFrag,REDD (PA) vs no REDD,17.5,36.6,19.3,precipitation
+VCS944,forestFrag,REDD (PA) vs no REDD,0.1,2.9,0,population_density
+VCS963,forestFrag,REDD (PA) vs no REDD,82.7,84.9,81.9,precipitation
+ACCUEOP101157,canopy_height,REDD (PA) vs no REDD,7.6,24.9,1.7,human_footprint
+ACCUEOP101164,canopy_height,REDD (PA) vs no REDD,0.9,8.9,0,accessibility
+ER102,canopy_height,REDD (PA) vs no REDD,4.6,19.6,9.4,aboveground_biomass_2000
+ER130,canopy_height,REDD (PA) vs no REDD,4.3,19.1,0,aboveground_biomass_2000
+ER137,canopy_height,REDD (PA) vs no REDD,37.1,52.8,32.5,precipitation
+ER139,canopy_height,REDD (PA) vs no REDD,5.2,20.8,0,accessibility
+ER143,canopy_height,REDD (PA) vs no REDD,1,9.4,0,population_density
+VCS1052,canopy_height,REDD (PA) vs no REDD,52.6,63.6,57.2,accessibility
+VCS1118,canopy_height,REDD (PA) vs no REDD,19.1,38.2,30.9,aboveground_biomass_2000
+VCS1122,canopy_height,REDD (PA) vs no REDD,18.1,37.2,29.1,precipitation
+VCS1215,canopy_height,REDD (PA) vs no REDD,15.6,34.7,21.1,population_density
+VCS1311,canopy_height,REDD (PA) vs no REDD,50.4,62.1,55.4,population_density
+VCS1325,canopy_height,REDD (PA) vs no REDD,0.2,3.9,0,human_footprint
+VCS1392,canopy_height,REDD (PA) vs no REDD,6.2,22.6,0,elevation
+VCS1398,canopy_height,REDD (PA) vs no REDD,6.4,22.9,15.4,human_footprint
+VCS1400,canopy_height,REDD (PA) vs no REDD,8.8,26.6,19.6,elevation
+VCS1403,canopy_height,REDD (PA) vs no REDD,51.1,62.6,45.2,aboveground_biomass_2000
+VCS1503,canopy_height,REDD (PA) vs no REDD,22.9,41.6,30,precipitation
+VCS1532,canopy_height,REDD (PA) vs no REDD,1.9,12.9,0,population_density
+VCS1541,canopy_height,REDD (PA) vs no REDD,4.5,19.6,8.6,slope
+VCS1571,canopy_height,REDD (PA) vs no REDD,NA,NA,NA,NA
+VCS1622,canopy_height,REDD (PA) vs no REDD,0.1,3.5,0,human_footprint
+VCS1650,canopy_height,REDD (PA) vs no REDD,7.9,25.3,15.8,human_footprint
+VCS1672,canopy_height,REDD (PA) vs no REDD,0.7,7.9,0,precipitation
+VCS1674,canopy_height,REDD (PA) vs no REDD,7.9,25.3,17.7,precipitation
+VCS1689,canopy_height,REDD (PA) vs no REDD,27,45.1,36.2,elevation
+VCS1748,canopy_height,REDD (PA) vs no REDD,25.5,43.9,23,aboveground_biomass_2000
+VCS1775,canopy_height,REDD (PA) vs no REDD,6,22.2,4.6,elevation
+VCS1848,canopy_height,REDD (PA) vs no REDD,37.5,53.1,49.8,accessibility
+VCS1881,canopy_height,REDD (PA) vs no REDD,19.1,38.2,23.1,precipitation
+VCS1900,canopy_height,REDD (PA) vs no REDD,NA,NA,NA,precipitation
+VCS2290,canopy_height,REDD (PA) vs no REDD,1.5,11.6,0,human_footprint
+VCS2317,canopy_height,REDD (PA) vs no REDD,10.8,29.3,16.6,accessibility
+VCS2324,canopy_height,REDD (PA) vs no REDD,0.1,3.2,0,accessibility
+VCS2510,canopy_height,REDD (PA) vs no REDD,5.4,21.2,0,gdp
+VCS2551,canopy_height,REDD (PA) vs no REDD,0.9,9.1,0,population_density
+VCS2566,canopy_height,REDD (PA) vs no REDD,9.8,28,9.5,elevation
+VCS3506,canopy_height,REDD (PA) vs no REDD,3.6,17.5,3.7,aboveground_biomass_2000
+VCS674,canopy_height,REDD (PA) vs no REDD,10.5,28.9,12.3,aboveground_biomass_2000
+VCS856,canopy_height,REDD (PA) vs no REDD,1.7,12.1,0,accessibility
+VCS904,canopy_height,REDD (PA) vs no REDD,30.1,47.5,35.7,precipitation
+VCS934,canopy_height,REDD (PA) vs no REDD,24.5,43,27.8,precipitation
+VCS944,canopy_height,REDD (PA) vs no REDD,10.8,29.3,21.7,precipitation
+VCS963,canopy_height,REDD (PA) vs no REDD,85.5,87.2,84.8,accessibility
+ACCUEOP101164,carbon_flux,REDD (PA) vs no REDD,0.7,7.8,0,elevation
+ER102,carbon_flux,REDD (PA) vs no REDD,3.4,17.2,6.7,aboveground_biomass_2000
+ER130,carbon_flux,REDD (PA) vs no REDD,6.9,23.7,3.1,precipitation
+ER137,carbon_flux,REDD (PA) vs no REDD,18.8,37.9,10.2,precipitation
+ER139,carbon_flux,REDD (PA) vs no REDD,11.7,30.3,0,accessibility
+ER143,carbon_flux,REDD (PA) vs no REDD,7.3,24.3,5.2,population_density
+VCS1052,carbon_flux,REDD (PA) vs no REDD,2.3,14.3,0,elevation
+VCS1118,carbon_flux,REDD (PA) vs no REDD,5.6,21.6,9.9,precipitation
+VCS1122,carbon_flux,REDD (PA) vs no REDD,0.9,8.9,0,precipitation
+VCS1215,carbon_flux,REDD (PA) vs no REDD,23.1,41.8,29.8,precipitation
+VCS1311,carbon_flux,REDD (PA) vs no REDD,13.1,32,18.7,population_density
+VCS1325,carbon_flux,REDD (PA) vs no REDD,0.4,6.1,0,precipitation
+VCS1392,carbon_flux,REDD (PA) vs no REDD,0.1,3,0,slope
+VCS1398,carbon_flux,REDD (PA) vs no REDD,5.7,21.7,13.6,elevation
+VCS1400,carbon_flux,REDD (PA) vs no REDD,6.8,23.6,16,elevation
+VCS1403,carbon_flux,REDD (PA) vs no REDD,1.3,10.7,0,aboveground_biomass_2000
+VCS1503,carbon_flux,REDD (PA) vs no REDD,9.1,27,12.1,precipitation
+VCS1532,carbon_flux,REDD (PA) vs no REDD,0.4,5.9,0,human_footprint
+VCS1541,carbon_flux,REDD (PA) vs no REDD,0.1,3.6,0,population_density
+VCS1571,carbon_flux,REDD (PA) vs no REDD,NA,NA,NA,NA
+VCS1622,carbon_flux,REDD (PA) vs no REDD,2.6,15.1,7.2,precipitation
+VCS1650,carbon_flux,REDD (PA) vs no REDD,0.2,4.5,0,precipitation
+VCS1674,carbon_flux,REDD (PA) vs no REDD,2.9,15.8,7.1,population_density
+VCS1689,carbon_flux,REDD (PA) vs no REDD,7.6,24.9,10.1,slope
+VCS1748,carbon_flux,REDD (PA) vs no REDD,20.6,39.6,16.9,gdp
+VCS1775,carbon_flux,REDD (PA) vs no REDD,5.5,21.4,0.5,elevation
+VCS1848,carbon_flux,REDD (PA) vs no REDD,16.7,35.9,31.2,accessibility
+VCS1881,carbon_flux,REDD (PA) vs no REDD,5.7,21.8,0,accessibility
+VCS2317,carbon_flux,REDD (PA) vs no REDD,3.2,16.6,0,slope
+VCS2324,carbon_flux,REDD (PA) vs no REDD,1.4,11.4,0,accessibility
+VCS2510,carbon_flux,REDD (PA) vs no REDD,24.6,43.1,24.7,accessibility
+VCS2566,carbon_flux,REDD (PA) vs no REDD,15.2,34.4,15.8,elevation
+VCS3506,carbon_flux,REDD (PA) vs no REDD,0.1,2.7,0,precipitation
+VCS674,carbon_flux,REDD (PA) vs no REDD,NA,NA,NA,human_footprint
+VCS856,carbon_flux,REDD (PA) vs no REDD,0.3,5.5,0,gdp
+VCS934,carbon_flux,REDD (PA) vs no REDD,2,13.2,0,elevation
+VCS944,carbon_flux,REDD (PA) vs no REDD,5.7,21.8,13.2,human_footprint
+VCS963,carbon_flux,REDD (PA) vs no REDD,4.4,19.2,0,slope
+ACCUEOP101164,biodIntact2015,REDD (PA) vs no REDD (PA),0.1,2.8,0,human_footprint
+ER102,biodIntact2015,REDD (PA) vs no REDD (PA),0.7,8.3,0,human_footprint
+ER130,biodIntact2015,REDD (PA) vs no REDD (PA),0,1.5,0,population_density
+ER137,biodIntact2015,REDD (PA) vs no REDD (PA),19.6,38.7,30.5,accessibility
+ER139,biodIntact2015,REDD (PA) vs no REDD (PA),1.5,11.6,0,precipitation
+ER143,biodIntact2015,REDD (PA) vs no REDD (PA),12.1,30.8,16.6,precipitation
+ER53,biodIntact2015,REDD (PA) vs no REDD (PA),29.9,47.4,23.3,precipitation
+VCS1052,biodIntact2015,REDD (PA) vs no REDD (PA),30.7,48,37.5,precipitation
+VCS1094,biodIntact2015,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS1118,biodIntact2015,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS1215,biodIntact2015,REDD (PA) vs no REDD (PA),7.8,25.1,11.4,slope
+VCS1311,biodIntact2015,REDD (PA) vs no REDD (PA),2,13.2,0,human_footprint
+VCS1398,biodIntact2015,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS1408,biodIntact2015,REDD (PA) vs no REDD (PA),0.3,5.3,0,gdp
+VCS1503,biodIntact2015,REDD (PA) vs no REDD (PA),1.4,11.1,0,precipitation
+VCS1532,biodIntact2015,REDD (PA) vs no REDD (PA),45.9,59,50.2,slope
+VCS1541,biodIntact2015,REDD (PA) vs no REDD (PA),25.1,43.5,38.1,aboveground_biomass_2000
+VCS1571,biodIntact2015,REDD (PA) vs no REDD (PA),32.4,49.3,33.2,precipitation
+VCS1622,biodIntact2015,REDD (PA) vs no REDD (PA),2.7,15.2,3.7,accessibility
+VCS1650,biodIntact2015,REDD (PA) vs no REDD (PA),22.6,41.3,34.9,precipitation
+VCS1674,biodIntact2015,REDD (PA) vs no REDD (PA),26.8,44.9,29.7,precipitation
+VCS1689,biodIntact2015,REDD (PA) vs no REDD (PA),2.5,14.7,5.4,precipitation
+VCS1748,biodIntact2015,REDD (PA) vs no REDD (PA),17.1,36.2,27.2,human_footprint
+VCS1775,biodIntact2015,REDD (PA) vs no REDD (PA),30.1,47.6,44.1,gdp
+VCS1881,biodIntact2015,REDD (PA) vs no REDD (PA),17.5,36.7,24.3,slope
+VCS1900,biodIntact2015,REDD (PA) vs no REDD (PA),7.1,24.1,17.1,precipitation
+VCS2290,biodIntact2015,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS2324,biodIntact2015,REDD (PA) vs no REDD (PA),0.6,7.6,0,accessibility
+VCS3506,biodIntact2015,REDD (PA) vs no REDD (PA),0.9,9.3,0,aboveground_biomass_2000
+VCS674,biodIntact2015,REDD (PA) vs no REDD (PA),15.5,34.6,16.3,slope
+VCS856,biodIntact2015,REDD (PA) vs no REDD (PA),0.1,2.4,0,gdp
+VCS904,biodIntact2015,REDD (PA) vs no REDD (PA),4.4,19.3,11.1,elevation
+VCS934,biodIntact2015,REDD (PA) vs no REDD (PA),0.8,8.3,0,precipitation
+VCS944,biodIntact2015,REDD (PA) vs no REDD (PA),31.5,48.6,40.2,elevation
+ACCUEOP101164,forestInt,REDD (PA) vs no REDD (PA),2.2,14,0,precipitation
+ER102,forestInt,REDD (PA) vs no REDD (PA),0.2,4.8,0,human_footprint
+ER130,forestInt,REDD (PA) vs no REDD (PA),4.3,19.1,9.9,population_density
+ER137,forestInt,REDD (PA) vs no REDD (PA),0,1.1,0,accessibility
+ER139,forestInt,REDD (PA) vs no REDD (PA),5.6,21.6,10.3,elevation
+ER143,forestInt,REDD (PA) vs no REDD (PA),0,1,0,human_footprint
+ER53,forestInt,REDD (PA) vs no REDD (PA),3.9,18.2,0,human_footprint
+VCS1052,forestInt,REDD (PA) vs no REDD (PA),3,16.1,0,precipitation
+VCS1094,forestInt,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS1118,forestInt,REDD (PA) vs no REDD (PA),5.6,21.6,5.9,population_density
+VCS1215,forestInt,REDD (PA) vs no REDD (PA),2.6,15,0,precipitation
+VCS1311,forestInt,REDD (PA) vs no REDD (PA),36.3,52.2,38.7,precipitation
+VCS1398,forestInt,REDD (PA) vs no REDD (PA),17.1,36.3,17.2,accessibility
+VCS1408,forestInt,REDD (PA) vs no REDD (PA),3.4,17.2,0,precipitation
+VCS1503,forestInt,REDD (PA) vs no REDD (PA),9.7,27.8,16.7,elevation
+VCS1532,forestInt,REDD (PA) vs no REDD (PA),5.2,20.8,2.6,gdp
+VCS1541,forestInt,REDD (PA) vs no REDD (PA),2.5,14.9,6.5,aboveground_biomass_2000
+VCS1571,forestInt,REDD (PA) vs no REDD (PA),10.2,28.5,4.9,precipitation
+VCS1622,forestInt,REDD (PA) vs no REDD (PA),8.2,25.7,15.7,human_footprint
+VCS1650,forestInt,REDD (PA) vs no REDD (PA),0.7,7.9,0,precipitation
+VCS1674,forestInt,REDD (PA) vs no REDD (PA),0.5,6.8,0,elevation
+VCS1689,forestInt,REDD (PA) vs no REDD (PA),0.3,5.1,0,precipitation
+VCS1748,forestInt,REDD (PA) vs no REDD (PA),25.5,43.9,36,human_footprint
+VCS1775,forestInt,REDD (PA) vs no REDD (PA),1.5,11.7,5.7,elevation
+VCS1881,forestInt,REDD (PA) vs no REDD (PA),3.3,16.7,0.2,accessibility
+VCS1900,forestInt,REDD (PA) vs no REDD (PA),0.5,6.7,0,elevation
+VCS2290,forestInt,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS2324,forestInt,REDD (PA) vs no REDD (PA),14.3,33.4,12.5,slope
+VCS3506,forestInt,REDD (PA) vs no REDD (PA),1.2,10.3,0,human_footprint
+VCS674,forestInt,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS856,forestInt,REDD (PA) vs no REDD (PA),4.2,18.9,0,precipitation
+VCS904,forestInt,REDD (PA) vs no REDD (PA),0.3,5.3,0,accessibility
+VCS934,forestInt,REDD (PA) vs no REDD (PA),3.6,17.6,7.6,human_footprint
+VCS944,forestInt,REDD (PA) vs no REDD (PA),0.1,3.6,0,human_footprint
+ACCUEOP101164,forestFrag,REDD (PA) vs no REDD (PA),9.3,27.4,5.6,human_footprint
+ER102,forestFrag,REDD (PA) vs no REDD (PA),11.9,30.7,0,human_footprint
+ER130,forestFrag,REDD (PA) vs no REDD (PA),0,0,0,population_density
+ER137,forestFrag,REDD (PA) vs no REDD (PA),28.3,46.1,39,slope
+ER139,forestFrag,REDD (PA) vs no REDD (PA),8.9,26.8,16.3,precipitation
+ER143,forestFrag,REDD (PA) vs no REDD (PA),9,26.9,11.6,elevation
+ER53,forestFrag,REDD (PA) vs no REDD (PA),31,48.2,24.6,precipitation
+VCS1052,forestFrag,REDD (PA) vs no REDD (PA),16.2,35.4,22,precipitation
+VCS1094,forestFrag,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS1118,forestFrag,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS1215,forestFrag,REDD (PA) vs no REDD (PA),25,43.5,33.4,precipitation
+VCS1311,forestFrag,REDD (PA) vs no REDD (PA),48.3,60.6,49.3,human_footprint
+VCS1398,forestFrag,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS1503,forestFrag,REDD (PA) vs no REDD (PA),50.9,62.4,57,human_footprint
+VCS1532,forestFrag,REDD (PA) vs no REDD (PA),11.6,30.3,10.1,precipitation
+VCS1541,forestFrag,REDD (PA) vs no REDD (PA),19.7,38.8,31.7,elevation
+VCS1571,forestFrag,REDD (PA) vs no REDD (PA),2.8,15.5,0,precipitation
+VCS1622,forestFrag,REDD (PA) vs no REDD (PA),4.9,20.3,6.6,precipitation
+VCS1650,forestFrag,REDD (PA) vs no REDD (PA),40.5,55.2,50.4,precipitation
+VCS1674,forestFrag,REDD (PA) vs no REDD (PA),19.1,38.2,21,precipitation
+VCS1689,forestFrag,REDD (PA) vs no REDD (PA),30.3,47.7,40.8,precipitation
+VCS1748,forestFrag,REDD (PA) vs no REDD (PA),46,59.1,53.4,precipitation
+VCS1775,forestFrag,REDD (PA) vs no REDD (PA),4.3,19.1,12.9,elevation
+VCS1881,forestFrag,REDD (PA) vs no REDD (PA),5.7,21.7,6.1,human_footprint
+VCS2324,forestFrag,REDD (PA) vs no REDD (PA),47.7,60.2,45.7,accessibility
+VCS3506,forestFrag,REDD (PA) vs no REDD (PA),0.6,7.6,0,aboveground_biomass_2000
+VCS856,forestFrag,REDD (PA) vs no REDD (PA),0.8,8.4,0,precipitation
+VCS904,forestFrag,REDD (PA) vs no REDD (PA),23.4,42.1,30.4,precipitation
+VCS934,forestFrag,REDD (PA) vs no REDD (PA),5.1,20.7,10.8,precipitation
+VCS944,forestFrag,REDD (PA) vs no REDD (PA),1.9,13,0,human_footprint
+ACCUEOP101164,canopy_height,REDD (PA) vs no REDD (PA),16.1,35.3,17.7,elevation
+ER102,canopy_height,REDD (PA) vs no REDD (PA),1.2,10.6,0,human_footprint
+ER130,canopy_height,REDD (PA) vs no REDD (PA),0.1,2.6,0,population_density
+ER137,canopy_height,REDD (PA) vs no REDD (PA),11.3,29.9,20.4,elevation
+ER139,canopy_height,REDD (PA) vs no REDD (PA),0.1,3.3,0,elevation
+ER143,canopy_height,REDD (PA) vs no REDD (PA),5.8,21.9,5.7,precipitation
+ER53,canopy_height,REDD (PA) vs no REDD (PA),0,1.6,0,precipitation
+VCS1052,canopy_height,REDD (PA) vs no REDD (PA),29.8,47.3,36.7,elevation
+VCS1094,canopy_height,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS1118,canopy_height,REDD (PA) vs no REDD (PA),16.7,35.9,23.2,accessibility
+VCS1215,canopy_height,REDD (PA) vs no REDD (PA),8.8,26.6,13.2,precipitation
+VCS1311,canopy_height,REDD (PA) vs no REDD (PA),50.1,61.9,51.6,precipitation
+VCS1398,canopy_height,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS1408,canopy_height,REDD (PA) vs no REDD (PA),1,9.6,0,gdp
+VCS1503,canopy_height,REDD (PA) vs no REDD (PA),4.5,19.5,7.1,precipitation
+VCS1532,canopy_height,REDD (PA) vs no REDD (PA),0,0.8,0,slope
+VCS1541,canopy_height,REDD (PA) vs no REDD (PA),14.8,33.9,27.5,aboveground_biomass_2000
+VCS1571,canopy_height,REDD (PA) vs no REDD (PA),13.2,32.1,9.7,human_footprint
+VCS1622,canopy_height,REDD (PA) vs no REDD (PA),2.5,14.7,3.2,human_footprint
+VCS1650,canopy_height,REDD (PA) vs no REDD (PA),11,29.6,21.7,precipitation
+VCS1674,canopy_height,REDD (PA) vs no REDD (PA),1.3,10.9,0,human_footprint
+VCS1689,canopy_height,REDD (PA) vs no REDD (PA),10.1,28.3,20.6,precipitation
+VCS1748,canopy_height,REDD (PA) vs no REDD (PA),10.5,28.9,18.7,human_footprint
+VCS1775,canopy_height,REDD (PA) vs no REDD (PA),3.3,16.9,11.2,elevation
+VCS1881,canopy_height,REDD (PA) vs no REDD (PA),2.9,15.9,0,elevation
+VCS1900,canopy_height,REDD (PA) vs no REDD (PA),2.5,14.9,6.9,human_footprint
+VCS2290,canopy_height,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS2324,canopy_height,REDD (PA) vs no REDD (PA),3,16.1,0,elevation
+VCS3506,canopy_height,REDD (PA) vs no REDD (PA),0.1,2.9,0,aboveground_biomass_2000
+VCS674,canopy_height,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS856,canopy_height,REDD (PA) vs no REDD (PA),2.3,14.2,0,accessibility
+VCS904,canopy_height,REDD (PA) vs no REDD (PA),7.4,24.6,16.9,elevation
+VCS934,canopy_height,REDD (PA) vs no REDD (PA),26.5,44.7,38.2,elevation
+VCS944,canopy_height,REDD (PA) vs no REDD (PA),3.3,16.9,2.7,elevation
+ACCUEOP101164,carbon_flux,REDD (PA) vs no REDD (PA),24,42.6,24.2,gdp
+ER102,carbon_flux,REDD (PA) vs no REDD (PA),1.4,11,0,human_footprint
+ER130,carbon_flux,REDD (PA) vs no REDD (PA),0,1.1,0,population_density
+ER137,carbon_flux,REDD (PA) vs no REDD (PA),0,1,0,accessibility
+ER139,carbon_flux,REDD (PA) vs no REDD (PA),2.5,14.9,2.6,human_footprint
+ER143,carbon_flux,REDD (PA) vs no REDD (PA),0.1,2.6,0,accessibility
+ER53,carbon_flux,REDD (PA) vs no REDD (PA),2.4,14.4,0,human_footprint
+VCS1052,carbon_flux,REDD (PA) vs no REDD (PA),13.1,32,17.8,precipitation
+VCS1094,carbon_flux,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS1118,carbon_flux,REDD (PA) vs no REDD (PA),6.4,23,6.9,accessibility
+VCS1215,carbon_flux,REDD (PA) vs no REDD (PA),3.3,16.9,1.7,precipitation
+VCS1311,carbon_flux,REDD (PA) vs no REDD (PA),23.4,42.1,25.3,precipitation
+VCS1398,carbon_flux,REDD (PA) vs no REDD (PA),15.6,34.7,15,accessibility
+VCS1503,carbon_flux,REDD (PA) vs no REDD (PA),0.1,2.8,0,elevation
+VCS1532,carbon_flux,REDD (PA) vs no REDD (PA),11.8,30.5,5.7,precipitation
+VCS1541,carbon_flux,REDD (PA) vs no REDD (PA),7.9,25.4,18,aboveground_biomass_2000
+VCS1571,carbon_flux,REDD (PA) vs no REDD (PA),14.4,33.4,11.3,precipitation
+VCS1622,carbon_flux,REDD (PA) vs no REDD (PA),3.6,17.4,5.2,precipitation
+VCS1650,carbon_flux,REDD (PA) vs no REDD (PA),2.4,14.5,4.4,slope
+VCS1674,carbon_flux,REDD (PA) vs no REDD (PA),1.4,11.4,0,elevation
+VCS1689,carbon_flux,REDD (PA) vs no REDD (PA),0.1,3.7,0,human_footprint
+VCS1748,carbon_flux,REDD (PA) vs no REDD (PA),15.6,34.7,25.4,human_footprint
+VCS1775,carbon_flux,REDD (PA) vs no REDD (PA),1,9.4,1.3,gdp
+VCS1881,carbon_flux,REDD (PA) vs no REDD (PA),0,0.7,0,accessibility
+VCS2324,carbon_flux,REDD (PA) vs no REDD (PA),0.4,6.4,0,elevation
+VCS3506,carbon_flux,REDD (PA) vs no REDD (PA),2,13.4,0,precipitation
+VCS674,carbon_flux,REDD (PA) vs no REDD (PA),NA,NA,NA,precipitation
+VCS856,carbon_flux,REDD (PA) vs no REDD (PA),4.3,19.1,0,accessibility
+VCS904,carbon_flux,REDD (PA) vs no REDD (PA),25.1,43.5,33.1,accessibility
+VCS934,carbon_flux,REDD (PA) vs no REDD (PA),0.1,2.8,0,human_footprint
+VCS944,carbon_flux,REDD (PA) vs no REDD (PA),2.5,14.9,0.1,human_footprint

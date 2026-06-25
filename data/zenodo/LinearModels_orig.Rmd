@@ -1,0 +1,977 @@
+---
+title: "REDD_LinearModels"
+output: pdf_document
+date: "2025-08-15"
+---
+
+Title: REDD+ Linear Models After Matching (Scorecard LMs)
+Author: Kelly Ong
+
+Description:
+This script runs project-level fixed-effects linear models on matched pixel 
+datasets for five score-card variables:
+1) forestInt   
+2) forestFrag   
+3) carbon_flux
+4) canopy_height  
+5) biodIntact2015
+
+Workflow:
+(A) Read REDD+ project list.
+(B) Exclude UID–biome combinations with any post-match SMD > 0.25.
+(C) For each comparison, load matched pixels (treated vs control),
+  require >= 30 complete pairs, build the 4-level "group", and
+  fit: outcome ~ group + [unbalanced covariates] + factor(pair_id).
+(D) Save per-UID coefficient tables and a combined summary CSV.
+(E) Run sensitivity analysis for unobserved confounding (sensemakr)
+
+Design choices:
+- Pair fixed effects via factor(pair_id) respect 1:1 matching.
+- Only covariates that remain unbalanced within pairs (paired t-test p<0.05)
+enter the LM as confounders. This guards against overfitting and collinearity.
+- Projects with poor balance (any SMD > 0.25) are excluded a priori.
+
+Outputs (per comparison × score-card variable):
+- output/LM_*/<var>/lm_summary_<UID>.csv (per-project coefficients)
+- output/LM_*/<var>/lm_summary_combined_<var>.csv
+- output/LM_*/<var>/LM_skipped_REDD_sites.csv (reasons for skips)
+
+Notes:
+Coefficients on the 'group<treated>' term are interpreted as the
+average within-pair difference (treated vs control) in the outcome,
+conditional on pair fixed effects and any unbalanced covariates.
+
+# 0. Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = TRUE, warning = TRUE)
+
+# Set the working directory where all datasets are located
+wd <- "~/Documents/Ecological Integrity of Avoided Deforestation Projects/data/"
+
+# Load required packages
+library(readr)
+library(sf)
+library(dplyr)
+library(tidyr)
+library(readr)
+library(rlang)
+library(purrr)
+library(sensemakr)
+
+# Small helper
+msg <- function(...) cat("[", format(Sys.time()), "] ", ..., "\n", sep = "")
+```
+
+# 1. Read core data
+
+```{r}
+# REDD+ project polygons (with REDD UID & biome info)
+redd <- st_read(paste0(wd, "REDD.shp")) # REDD project boundaries
+
+# Project-specific pixel resolution (km)
+area <- read.csv(file.path(wd, "area.csv"))
+
+# Candidate project IDs
+file_ids <- area$UID
+```
+
+# 2. Exclude UID–biome combinations with any SMD > 0.25
+
+```{r}
+# Rationale: enforce covariate balance before modeling outcomes.
+smd_dir <- paste0(wd, "output/NN_output_SMD_results_mahvars/")
+
+redd_high_smd <- tibble::tibble(UID = character(), BIOME_NUM = numeric())
+smd_file_issues <- tibble::tibble(UID = character(), Reason = character())
+
+for (i in seq_len(nrow(redd))) {
+  uid  <- redd$UID[i]
+  bio  <- redd$BIOME_NUM[i]
+  fpth <- paste0(smd_dir, sprintf("NN_SMD_%s_biome_%s.csv", uid, bio))
+
+  if (!file.exists(fpth)) {
+    smd_file_issues <- dplyr::bind_rows(smd_file_issues,
+                                        tibble::tibble(UID = uid, Reason = "SMD file not found"))
+    next
+  }
+
+  smd_row <- read.csv(fpth)
+  if ("Covariate" %in% names(smd_row))
+    smd_row <- smd_row[!(smd_row$Covariate == "distance"), , drop = FALSE]
+
+  # Check if there are any SMDs>0.25
+  if (any(abs(smd_row$SMD) > 0.25, na.rm = TRUE)) {
+    redd_high_smd <- dplyr::bind_rows(redd_high_smd,
+                                      tibble::tibble(UID = uid, BIOME_NUM = as.numeric(bio)))
+  }
+}
+
+redd_clean <- redd %>%
+  dplyr::anti_join(redd_high_smd, by = c("UID", "BIOME_NUM"))
+
+msg("After SMD>0.25 filter:", nrow(redd_clean), "rows (UID–biome).")
+file_ids_clean <- unique(redd_clean$UID)
+msg("Distinct UIDs retained:", length(file_ids_clean))
+
+# (Optional) record SMD file issues for transparency
+if (!dir.exists(file.path(wd, "output"))) dir.create(file.path(wd, "output"))
+readr::write_csv(smd_file_issues, file.path(wd, "output", "LM_prechecks_SMD_missing.csv"))
+```
+
+# 3. Helpers for LM stage
+
+```{r}
+# Matching covariates to test for residual imbalance within pairs.
+matching_vars <- c(
+  "aboveground_biomass_2000",
+  "precipitation",
+  "elevation",
+  "slope",
+  "human_footprint",
+  "gdp",
+  "population_density",
+  "accessibility"
+)
+
+# (i) Paired t-test within matched pairs (REDD vs non-REDD) for a covariate.
+#     Returns p-value; only covariates with p<0.05 are added to LM.
+paired_test <- function(df, var){
+  if (!all(c("pair_id","inside_REDD") %in% names(df))) return(NA_real_)
+  tmp <- df[!is.na(df[[var]]), c(var, "inside_REDD", "pair_id")]
+  # Retain pairs with one treated (1) and one control (0)
+  pair_tab <- table(tmp$pair_id, tmp$inside_REDD)
+  good <- rownames(pair_tab)[rowSums(pair_tab == 1) == 2]
+  if (!length(good)) return(NA_real_)
+  tmp <- tmp[tmp$pair_id %in% good, , drop = FALSE]
+  if (length(unique(tmp$pair_id)) < 2) return(NA_real_)
+
+  wide <- tidyr::pivot_wider(
+    tmp, id_cols = pair_id,
+    names_from = inside_REDD, values_from = !!sym(var),
+    names_prefix = "treat_"
+  )
+  diffs <- wide$treat_1 - wide$treat_0
+  if (length(diffs) < 2 || all(is.na(diffs))) return(NA_real_)
+  stats::t.test(diffs, mu = 0)$p.value
+}
+
+# (ii) Loader for matched data for a UID.
+#      Prefers a combined file (if you created one), else binds all per-biome files
+#      that passed the SMD filter.
+load_matched_for_uid <- function(uid, redd_clean, wd){
+  dir_raw  <- file.path(wd, "output/NN_output_matched_data_mahvars")
+  dir_comb <- file.path(wd, "output/NN_output_matched_data_mahvars_combined")
+
+  comb_path <- file.path(dir_comb, sprintf("NN_matched_data_%s_combined.csv", uid))
+  if (file.exists(comb_path)) {
+    msg("   » Using combined file for ", uid)
+    return(readr::read_csv(comb_path, show_col_types = FALSE))
+  }
+
+  biomes <- redd_clean$BIOME_NUM[redd_clean$UID == uid]
+  candidates <- unique(file.path(dir_raw, sprintf("NN_matched_data_%s_biome_%s.csv", uid, biomes)))
+  exists <- candidates[file.exists(candidates)]
+
+  if (!length(exists)) {
+    exists <- list.files(dir_raw,
+                         pattern = sprintf("^NN_matched_data_%s_biome_\\d+\\.csv$", uid),
+                         full.names = TRUE)
+  }
+  if (!length(exists)) return(NULL)
+
+  msg("   » Binding ", length(exists), " biome file(s) for ", uid)
+  suppressMessages(purrr::map_dfr(exists, ~ readr::read_csv(.x, show_col_types = FALSE)))
+}
+
+# (iii) Extract the group (treatment) effect from a fitted model.
+#       Robust to additional covariates: matches the coefficient by its name.
+extract_group_effect <- function(id, model, data, control_label){
+  if (is.null(model) || is.null(data)) {
+    return(tibble::tibble(UID=id, term=NA_character_, Estimate=NA_real_, StdError=NA_real_,
+                          tvalue=NA_real_, pvalue=NA_real_))
+  }
+  # Ensure two levels only (control + treatment)
+  glevels <- levels(droplevels(data$group))
+  treated_level <- setdiff(glevels, control_label)
+  # Fallbacks if levels are messy
+  trm <- if (length(treated_level) == 1) paste0("group", treated_level) else NA_character_
+
+  cf <- summary(model)$coefficients %>% as.data.frame()
+  names(cf) <- sub("Std\\. Error", "StdError", names(cf))
+  names(cf) <- sub("t value", "tvalue", names(cf))
+  names(cf) <- sub("Pr\\(>\\|t\\|\\)", "pvalue", names(cf))
+
+  if (!is.na(trm) && (trm %in% rownames(cf))) {
+    return(tibble::tibble(
+      UID      = id,
+      term     = trm,
+      Estimate = cf[trm, "Estimate"],
+      StdError = cf[trm, "StdError"],
+      tvalue   = cf[trm, "tvalue"],
+      pvalue   = cf[trm, "pvalue"]
+    ))
+  } else {
+    # Last resort: pick the single row that starts with "group"
+    rn <- rownames(cf)
+    grp_rows <- rn[grepl("^group", rn)]
+    if (length(grp_rows) == 1) {
+      trm <- grp_rows[1]
+      return(tibble::tibble(
+        UID      = id,
+        term     = trm,
+        Estimate = cf[trm, "Estimate"],
+        StdError = cf[trm, "StdError"],
+        tvalue   = cf[trm, "tvalue"],
+        pvalue   = cf[trm, "pvalue"]
+      ))
+    }
+  }
+  tibble::tibble(UID = id, 
+                 term = NA_character_, 
+                 Estimate = NA_real_, 
+                 StdError = NA_real_, 
+                 tvalue = NA_real_, 
+                 pvalue = NA_real_)
+}
+
+```
+
+# 4. LM runner (one variable × one comparison)
+
+```{r}
+# Formula per-UID:  outcome ~ group + (unbalanced covariates) + factor(pair_id)
+# Requirements:
+# 1. >= 30 complete pairs with non-NA outcome
+# 2. matched_data contains group flags and pair_id
+run_scorecard_LM <- function(file_ids,
+                             area,          # kept for interface consistency
+                             control,       # e.g., "No PA, No REDD"
+                             treatment,     # e.g., "No PA, REDD"
+                             scorecard_var, # one of the five variables
+                             output_dir,    # directory to write outputs
+                             wd) {
+
+  dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+
+  lm_model_list      <- list()
+  filtered_data_list <- list()
+  skipped_ids <- tibble::tibble(UID = character(), Reason = character())
+
+  for (id in file_ids) {
+    msg("──────────────────────────────────────────")
+    msg("Processing REDD site: ", id)
+
+    matched_data <- load_matched_for_uid(id, redd_clean, wd)
+    if (is.null(matched_data)) {
+      skipped_ids <- dplyr::bind_rows(skipped_ids,
+                                      tibble::tibble(UID = id, Reason = "Matched data file not found"))
+      next
+    }
+
+    # Outcome availability checks
+    if (!(scorecard_var %in% names(matched_data))) {
+      skipped_ids <- dplyr::bind_rows(skipped_ids,
+                                      tibble::tibble(UID = id, Reason = paste("Missing variable:", scorecard_var)))
+      next
+    }
+    if (all(is.na(matched_data[[scorecard_var]]))) {
+      skipped_ids <- dplyr::bind_rows(skipped_ids,
+                                      tibble::tibble(UID = id, Reason = paste("All NA in", scorecard_var)))
+      next
+    }
+    if (all(matched_data[[scorecard_var]] == 0, na.rm = TRUE)) {
+      skipped_ids <- dplyr::bind_rows(skipped_ids,
+                                      tibble::tibble(UID = id, Reason = paste("All zero in", scorecard_var)))
+      next
+    }
+
+    # Build 4-category group; filter to the two levels of interest
+    matched_data$group <- with(matched_data, ifelse(
+      inside_REDD==1 & inside_protected_area==0, "No PA, REDD",
+      ifelse(inside_REDD==0 & inside_protected_area==0, "No PA, No REDD",
+        ifelse(inside_REDD==0 & inside_protected_area==1, "PA, No REDD",
+          ifelse(inside_REDD==1 & inside_protected_area==1, "PA, REDD", NA)))))
+    matched_data$group <- factor(matched_data$group)
+
+    group_labels <- c(treatment, control)
+    matched_data <- matched_data[matched_data$group %in% group_labels, , drop = FALSE]
+
+    # Require >= 30 complete pairs with non-NA outcome
+    if (!all(c("pair_id","group") %in% names(matched_data))) {
+      skipped_ids <- bind_rows(skipped_ids, tibble::tibble(UID = id, Reason = "Missing pair_id or group"))
+      next
+    }
+
+    valid_pairs <- matched_data %>%
+      dplyr::filter(!is.na(.data[[scorecard_var]])) %>%
+      dplyr::group_by(pair_id) %>%
+      dplyr::filter(dplyr::n_distinct(group) == 2) %>%
+      dplyr::ungroup() %>%
+      dplyr::pull(pair_id) %>%
+      unique()
+
+    if (length(valid_pairs) < 30) {
+      skipped_ids <- dplyr::bind_rows(skipped_ids,
+                                      tibble::tibble(UID = id, Reason = paste0("<30 matched pairs with non-NA ", scorecard_var)))
+      next
+    }
+
+    filtered_data <- matched_data %>%
+      dplyr::filter(pair_id %in% valid_pairs) %>%
+      dplyr::mutate(
+        group = droplevels(group),                # drop unused levels → 2 levels only
+        inside_REDD = as.factor(inside_REDD),
+        REDD = as.factor(REDD),
+        inside_protected_area = as.factor(inside_protected_area)
+      )
+    filtered_data$group <- stats::relevel(filtered_data$group, ref = control)
+
+    # Select residual confounders (unbalanced within pairs)
+    unbalanced_vars <- character(0)
+    for (v in matching_vars) {
+      if (v %in% names(filtered_data)) {
+        pval <- paired_test(filtered_data, v)
+        if (!is.na(pval) && pval < 0.05) unbalanced_vars <- c(unbalanced_vars, v)
+      }
+    }
+    if (length(unbalanced_vars)) {
+      msg("   » Confounders added to LM: ", paste(unbalanced_vars, collapse = ", "))
+    } else {
+      msg("   » No matching variable p<0.05; LM uses none.")
+    }
+
+    # Fit LM with pair fixed effects
+    rhs <- c("group", unbalanced_vars, "factor(pair_id)")
+    fmla <- stats::as.formula(paste(scorecard_var, "~", paste(rhs, collapse = " + ")))
+    model <- tryCatch(stats::lm(fmla, data = filtered_data), error = function(e) {
+      msg("   » LM error: ", e$message); return(NULL)
+    })
+    if (is.null(model)) {
+      skipped_ids <- bind_rows(skipped_ids, tibble::tibble(UID = id, Reason = "LM error"))
+      next
+    }
+
+    # Save per-UID coefficient table
+    cf <- summary(model)$coefficients %>% as.data.frame()
+    names(cf) <- sub("Std\\. Error", "StdError", names(cf))
+    names(cf) <- sub("t value", "tvalue", names(cf))
+    names(cf) <- sub("Pr\\(>\\|t\\|\\)", "pvalue", names(cf))
+    cf$term <- rownames(cf); rownames(cf) <- NULL
+
+    readr::write_csv(
+      cf[, c("term","Estimate","StdError","tvalue","pvalue")],
+      file.path(output_dir, sprintf("lm_summary_%s.csv", id))
+    )
+
+    lm_model_list[[id]]      <- model
+    filtered_data_list[[id]] <- filtered_data
+    msg("   » Saved outputs for ", id)
+  }
+
+  # Combined summary: the single treatment-vs-control coefficient per UID
+  lm_summary_rows <- purrr::map_dfr(
+    file_ids,
+    ~ extract_group_effect(.x, lm_model_list[[.x]], filtered_data_list[[.x]], control_label = control)
+  )
+
+  readr::write_csv(
+    lm_summary_rows,
+    file.path(output_dir, sprintf("lm_summary_combined_%s.csv", scorecard_var))
+  )
+
+  readr::write_csv(
+    skipped_ids,
+    file.path(output_dir, "LM_skipped_REDD_sites.csv")
+  )
+
+  invisible(list(models  = lm_model_list,
+                 matched = filtered_data_list,
+                 skipped = skipped_ids,
+                 combined= lm_summary_rows))
+}
+```
+
+# 5. Run the four comparisons (for all five variables)
+
+```{r}
+# Comparisons:
+# (1) 'REDD, No PA' vs 'No REDD, No PA'
+# (2) 'REDD, No PA' vs 'No REDD, PA'
+# (3) 'REDD, PA'    vs 'No REDD, No PA'
+# (4) 'REDD, PA'    vs 'No REDD, PA'
+
+outdir <- function(...) file.path(wd, "output", ...)
+
+# 5.1 REDD, No PA vs No REDD, No PA
+forestInt_1 <- run_scorecard_LM(file_ids_clean, area,
+  control = "No PA, No REDD", treatment = "No PA, REDD",
+  scorecard_var = "forestInt",
+  output_dir = outdir("LM_summary/REDD_noPA_vs_noREDD_noPA","forestInt"),
+  wd = wd)
+
+forestFrag_1 <- run_scorecard_LM(file_ids_clean, area,
+  control = "No PA, No REDD", treatment = "No PA, REDD",
+  scorecard_var = "forestFrag",
+  output_dir = outdir("LM_summary/REDD_noPA_vs_noREDD_noPA","forestFrag"),
+  wd = wd) 
+
+biod_intact_1 <- run_scorecard_LM(file_ids_clean, area,
+  control = "No PA, No REDD", treatment = "No PA, REDD",
+  scorecard_var = "biodIntact2015",
+  output_dir = outdir("LM_summary/REDD_noPA_vs_noREDD_noPA","biodIntact2015"),
+  wd = wd)
+
+canopyheight_1 <- run_scorecard_LM(file_ids_clean, area,
+  control = "No PA, No REDD", treatment = "No PA, REDD",
+  scorecard_var = "canopy_height",
+  output_dir = outdir("LM_summary/REDD_noPA_vs_noREDD_noPA","canopy_height"),
+  wd = wd)
+
+carbon_flux_1 <- run_scorecard_LM(file_ids_clean, area,
+  control = "No PA, No REDD", treatment = "No PA, REDD",
+  scorecard_var = "carbon_flux",
+  output_dir = outdir("LM_summary/REDD_noPA_vs_noREDD_noPA","carbon_flux"),
+  wd = wd)
+
+# 5.2 REDD, No PA vs No REDD, PA
+forestInt_2 <- run_scorecard_LM(file_ids_clean, area,
+  control = "PA, No REDD", treatment = "No PA, REDD",
+  scorecard_var = "forestInt",
+  output_dir = outdir("LM_summary/REDD_noPA_vs_noREDD_PA","forestInt"),
+  wd = wd)
+
+forestFrag_2 <- run_scorecard_LM(file_ids_clean, area,
+  control = "PA, No REDD", treatment = "No PA, REDD",
+  scorecard_var = "forestFrag",
+  output_dir = outdir("LM_summary/REDD_noPA_vs_noREDD_PA","forestFrag"),
+  wd = wd)
+
+biod_intact_2 <- run_scorecard_LM(file_ids_clean, area,
+  control = "PA, No REDD", treatment = "No PA, REDD",
+  scorecard_var = "biodIntact2015",
+  output_dir = outdir("LM_summary/REDD_noPA_vs_noREDD_PA","biodIntact2015"),
+  wd = wd)
+
+canopyheight_2 <- run_scorecard_LM(file_ids_clean, area,
+  control = "PA, No REDD", treatment = "No PA, REDD",
+  scorecard_var = "canopy_height",
+  output_dir = outdir("LM_summary/REDD_noPA_vs_noREDD_PA","canopy_height"),
+  wd = wd)
+
+carbon_flux_2 <- run_scorecard_LM(file_ids_clean, area,
+  control = "PA, No REDD", treatment = "No PA, REDD",
+  scorecard_var = "carbon_flux",
+  output_dir = outdir("LM_summary/REDD_noPA_vs_noREDD_PA","carbon_flux"),
+  wd = wd)
+
+# 5.3 REDD, PA vs No REDD, No PA
+forestInt_3 <- run_scorecard_LM(file_ids_clean, area,
+  control = "No PA, No REDD", treatment = "PA, REDD",
+  scorecard_var = "forestInt",
+  output_dir = outdir("LM_summary/REDD_PA_vs_noREDD_noPA","forestInt"),
+  wd = wd)
+
+forestFrag_3 <- run_scorecard_LM(file_ids_clean, area,
+  control = "No PA, No REDD", treatment = "PA, REDD",
+  scorecard_var = "forestFrag",
+  output_dir = outdir("LM_summary/REDD_PA_vs_noREDD_noPA","forestFrag"),
+  wd = wd)
+
+biod_intact_3 <- run_scorecard_LM(file_ids_clean, area,
+  control = "No PA, No REDD", treatment = "PA, REDD",
+  scorecard_var = "biodIntact2015",
+  output_dir = outdir("LM_summary/REDD_PA_vs_noREDD_noPA","biodIntact2015"),
+  wd = wd)
+
+canopyheight_3 <- run_scorecard_LM(file_ids_clean, area,
+  control = "No PA, No REDD", treatment = "PA, REDD",
+  scorecard_var = "canopy_height",
+  output_dir = outdir("LM_summary/REDD_PA_vs_noREDD_noPA","canopy_height"),
+  wd = wd)
+
+carbon_flux_3 <- run_scorecard_LM(file_ids_clean, area,
+  control = "No PA, No REDD", treatment = "PA, REDD",
+  scorecard_var = "carbon_flux",
+  output_dir = outdir("LM_summary/REDD_PA_vs_noREDD_noPA","carbon_flux"),
+  wd = wd)
+
+# 5.4 REDD, PA vs No REDD, PA 
+forestInt_4 <- run_scorecard_LM(file_ids_clean, area,
+  control = "PA, No REDD", treatment = "PA, REDD",
+  scorecard_var = "forestInt",
+  output_dir = outdir("LM_summary/REDD_PA_vs_noREDD_PA","forestInt"),
+  wd = wd)
+
+forestFrag_4 <- run_scorecard_LM(file_ids_clean, area,
+  control = "PA, No REDD", treatment = "PA, REDD",
+  scorecard_var = "forestFrag",
+  output_dir = outdir("LM_summary/REDD_PA_vs_noREDD_PA","forestFrag"),
+  wd = wd)
+
+biod_intact_4 <- run_scorecard_LM(file_ids_clean, area,
+  control = "PA, No REDD", treatment = "PA, REDD",
+  scorecard_var = "biodIntact2015",
+  output_dir = outdir("LM_summary/REDD_PA_vs_noREDD_PA","biodIntact2015"),
+  wd = wd)
+
+canopyheight_4 <- run_scorecard_LM(file_ids_clean, area,
+  control = "PA, No REDD", treatment = "PA, REDD",
+  scorecard_var = "canopy_height",
+  output_dir = outdir("LM_summary/REDD_PA_vs_noREDD_PA","canopy_height"),
+  wd = wd)
+
+carbon_flux_4 <- run_scorecard_LM(file_ids_clean, area,
+  control = "PA, No REDD", treatment = "PA, REDD",
+  scorecard_var = "carbon_flux",
+  output_dir = outdir("LM_summary/REDD_PA_vs_noREDD_PA","carbon_flux"),
+  wd = wd)
+```
+
+# 6. Standardizing effect sizes for plotting
+
+```{r}
+# Helpers
+safe_div <- function(num, den) {
+  ifelse(is.finite(den) & den > 0, num / den, NA_real_)
+}
+
+get_max_valid <- function(x, use_abs = FALSE) {
+  if (use_abs) x <- abs(x)
+  x_no_na <- x[!is.na(x)]
+  if (length(x_no_na) == 0) return(NA_real_)  # all NA
+  if (all(x_no_na == 0)) return(NA_real_)  # all zeros (or 0+NA)
+  max(x, na.rm = TRUE)
+}
+
+# 6.1 Read the linear model summaries for each comparison
+read_panel <- function(panel_dir) {
+  
+  base <- paste0(
+    wd,
+    "output/",
+    "LM_summary/",
+    panel_dir
+  )
+
+  # Read each metric's combined summary
+  lst <- list(
+    forestInt      = read.csv(paste0(base, "forestInt/lm_summary_combined_forestInt.csv")),
+    forestFrag     = read.csv(paste0(base, "forestFrag/lm_summary_combined_forestFrag.csv")),
+    biodIntact2015 = read.csv(paste0(base, "biodIntact2015/lm_summary_combined_biodIntact2015.csv")),
+    canopy_height  = read.csv(paste0(base, "canopy_height/lm_summary_combined_canopy_height.csv")),
+    carbon_flux    = read.csv(paste0(base, "carbon_flux/lm_summary_combined_carbon_flux.csv"))
+  )
+
+  # Bind and standardize sign (flip signs for fragmentation & carbon flux)
+  df <- dplyr::bind_rows(
+    transform(lst$forestInt, variable = "forestInt"),
+    transform(lst$forestFrag, variable = "forestFrag"),
+    transform(lst$biodIntact2015, variable = "biodIntact2015"),
+    transform(lst$canopy_height, variable = "canopy_height"),
+    transform(lst$carbon_flux, variable = "carbon_flux")
+  ) %>%
+    dplyr::mutate(
+      Estimate = ifelse(variable %in% c("forestFrag", "carbon_flux"), -Estimate, Estimate)
+    )
+
+  return(df)
+}
+
+panel_map <- data.frame(
+  panel_dir = c(
+    "REDD_noPA_vs_noREDD_noPA/",
+    "REDD_noPA_vs_noREDD_PA/",
+    "REDD_PA_vs_noREDD_noPA/",
+    "REDD_PA_vs_noREDD_PA/"),
+  panel_lab = c(
+    "REDD (No PA) vs No REDD (No PA)",
+    "REDD (No PA) vs No REDD (PA)",
+    "REDD (PA) vs No REDD (No PA)",
+    "REDD (PA) vs No REDD (PA)"
+  )
+)
+
+# Build combined dataset
+effects_df <- dplyr::bind_rows(
+  transform(read_panel(panel_map$panel_dir[1]), panel = panel_map$panel_lab[1]),
+  transform(read_panel(panel_map$panel_dir[2]), panel = panel_map$panel_lab[2]),
+  transform(read_panel(panel_map$panel_dir[3]), panel = panel_map$panel_lab[3]),
+  transform(read_panel(panel_map$panel_dir[4]), panel = panel_map$panel_lab[4])
+)
+
+# 6.2 Compute per-UID maxima from matched pixels
+std_skipped <- data.frame(UID = character(), Reason = character())
+
+max_list <- vector("list", length(file_ids_clean))
+names(max_list) <- file_ids_clean
+
+for (i in seq_along(file_ids_clean)) {
+  uid <- file_ids_clean[i]
+  md  <- load_matched_for_uid(uid, redd_clean, wd) # Reuse the loader from above
+
+  if (is.null(md)) {
+    std_skipped <- bind_rows(std_skipped, data.frame(UID = uid, Reason = "Matched data not found for maxima"))
+    max_list[[i]] <- data.frame(
+      UID = uid,
+      forestInt = NA_real_, forestFrag = NA_real_, biodIntact2015 = NA_real_,
+      canopy_height = NA_real_, carbon_flux = NA_real_
+    )
+    next
+  }
+
+  max_list[[i]] <- data.frame(
+    UID            = uid,
+    forestInt      = get_max_valid(md$forestInt),
+    forestFrag     = get_max_valid(md$forestFrag),
+    biodIntact2015 = get_max_valid(md$biodIntact2015),
+    canopy_height  = get_max_valid(md$canopy_height),
+    carbon_flux    = get_max_valid(md$carbon_flux, use_abs = TRUE) # absolute max for flux
+  )
+}
+
+max_df <- bind_rows(max_list) %>%
+  pivot_longer(-UID, names_to = "variable", values_to = "max_indicator_value")
+
+# 6.3 Standardize: std_treatment_effect = Estimate / max
+std_df <- effects_df %>%
+  left_join(max_df, by = c("UID", "variable")) %>%
+  mutate(
+    std_treatment_effect = safe_div(Estimate, max_indicator_value),
+    std_treatment_effect_zeroed = ifelse(pvalue >= 0.05, 0, std_treatment_effect)  # (optional) zero-out non-sig
+  )
+
+# Save consolidated and per-panel outputs
+dir.create(file.path(wd, "output", "LM_standardized"), showWarnings = FALSE)
+
+write.csv(std_df,
+          file.path(wd, "output", "LM_standardized", "standardized_effect_sizes_all_panels.csv"),
+          row.names = FALSE)
+
+# Write one file per comparison x variable
+for (pl in unique(std_df$panel)) {
+  for (var in unique(std_df$variable)) {
+
+    df_sub <- std_df %>%
+      filter(panel == pl, variable == var)
+
+    # skip empty combinations
+    if (nrow(df_sub) == 0) next
+
+    file_name <- paste0(
+      "standardized_",
+      gsub("[^A-Za-z0-9]+", "_", pl),
+      "_",
+      gsub("[^A-Za-z0-9]+", "_", var),
+      ".csv"
+    )
+
+    write.csv(
+      df_sub,
+      file.path(wd, "output", "LM_standardized", file_name),
+      row.names = FALSE
+    )
+  }
+}
+```
+
+# 7. Sensitivity analysis for unobserved confounding (sensemakr)
+
+## Function to run sensitivity analysis
+
+```{r}
+# Function to run sensitivity analysis + print Table X summary row
+run_sensemakr <- function(
+  model_object,
+  comparison_name,
+  wd
+) {
+
+  # Check available fitted models
+  if (is.null(model_object$models)) {
+    stop("model_object must contain a $models list")
+  }
+
+  uids <- names(model_object$models)
+
+  # Create empty results data.frame
+  sense_results <- data.frame(
+    UID = character(),
+    treatment_term = character(),
+    r2yd_x = numeric(), # partial R² (treatment ~ outcome)
+    rv_q = numeric(), # robustness value (q = 1)
+    rv_qa = numeric(), # robustness value (q = 1, α = 0.05)
+    benchmark_var = character(),
+    r2yz_dx = numeric(), # strength of confounder with outcome
+    r2dz_x = numeric(), # strength of confounder with treatment
+    stringsAsFactors = FALSE
+  )
+
+  # Loop over each project (UID)
+  for (uid in uids) {
+    
+    msg("──────────────────────────────────────────")
+    msg("Processing REDD site: ", uid)
+
+    model <- model_object$models[[uid]]
+
+    if (is.null(model)) {
+      sense_results <- rbind(sense_results, data.frame(
+        UID = uid,
+        treatment_term = NA,
+        r2yd_x = NA,
+        rv_q = NA,
+        rv_qa = NA,
+        benchmark_var = NA,
+        r2yz_dx = NA,
+        r2dz_x = NA
+      ))
+      next
+    }
+
+    # Identify treatment coefficient
+    coef_mat <- summary(model)$coefficients
+    coef_names <- rownames(coef_mat)
+
+    # -----------------------------
+    # Identify treatment term
+    # -----------------------------
+    # Treatment term to start with "group"
+    group_terms <- coef_names[grepl("^group", coef_names)]
+
+    # Require unique treatment term
+    if (length(group_terms) != 1) {
+      sense_results <- rbind(sense_results, data.frame(
+        UID = uid,
+        treatment_term = NA,
+        r2yd_x = NA,
+        rv_q = NA,
+        rv_qa = NA,
+        benchmark_var = NA,
+        r2yz_dx = NA,
+        r2dz_x = NA
+      ))
+      next
+    }
+
+    treatment_term <- group_terms[1]
+
+    # -----------------------------
+    # Identify benchmark covariate
+    # -----------------------------
+    coef_df <- as.data.frame(coef_mat)
+    coef_df$term <- rownames(coef_df)
+
+    # Keep only non-treatment, non-intercept, non-pair terms
+    candidate_covars <- coef_df[
+      !(coef_df$term %in% c("(Intercept)", treatment_term)) &
+        !grepl("^factor\\(pair_id\\)", coef_df$term),
+    ]
+
+    # If no covariates available
+    if (nrow(candidate_covars) == 0) {
+      benchmark_var <- NA
+      benchmark_t <- NA
+    } else {
+      # Select largest absolute t-value
+      candidate_covars$abs_t <- abs(candidate_covars[, "t value"])
+
+      best_idx <- which.max(candidate_covars$abs_t)
+
+      benchmark_var <- candidate_covars$term[best_idx]
+      benchmark_t <- candidate_covars[best_idx, "t value"]
+    }
+
+    # -----------------------------
+    # Run sensemakr
+    # -----------------------------
+    sm <- tryCatch(
+      sensemakr(
+        model = model,
+        treatment = treatment_term,
+        benchmark_covariates = benchmark_var,
+        kd = 1
+      ),
+      error = function(e) NULL
+    )
+
+    if (is.null(sm)) {
+      sense_results <- rbind(sense_results, data.frame(
+        UID = uid,
+        treatment_term = treatment_term,
+        r2yd_x = NA,
+        rv_q = NA,
+        rv_qa = NA,
+        benchmark_var = benchmark_var,
+        r2yz_dx = NA,
+        r2dz_x = NA
+      ))
+      next
+    }
+
+    # Extract sensitivity stats (rounded %)
+    r2yd_x <- round(sm$sensitivity_stats$r2yd.x * 100, 1)
+    rv_q   <- round(sm$sensitivity_stats$rv_q * 100, 1)
+    rv_qa  <- round(sm$sensitivity_stats$rv_qa * 100, 1)
+    
+    r2yz_dx <- round(sm$bounds$r2yz.dx * 100, 1)
+    r2dz_x  <- round(sm$bounds$r2dz.x * 100, 1)
+    
+    sense_results <- rbind(sense_results, data.frame(
+      UID = uid,
+      treatment_term = treatment_term,
+      r2yd_x = r2yd_x,
+      rv_q = rv_q,
+      rv_qa = rv_qa,
+      benchmark_var = benchmark_var,
+      r2yz_dx = r2yz_dx,
+      r2dz_x = r2dz_x
+    ))
+  }
+
+  # -----------------------------
+  # Save results
+  # -----------------------------
+  model_name <- deparse(substitute(model_object))
+  model_name <- sub("_[0-9]+$", "", model_name)
+
+  out_path <- paste0(
+    wd,
+    "output/unobserved confounding/",
+    comparison_name,
+    "/",
+    model_name,
+    ".csv"
+  )
+
+  dir.create(dirname(out_path), recursive = TRUE, showWarnings = FALSE)
+  write.csv(sense_results, out_path, row.names = FALSE)
+
+  return(sense_results)
+}
+```
+
+## Run sensitivity analysis
+
+```{r}
+# Comparisons:
+# (1) 'REDD, No PA' vs 'No REDD, No PA'
+# (2) 'REDD, No PA' vs 'No REDD, PA'
+# (3) 'REDD, PA'    vs 'No REDD, No PA'
+# (4) 'REDD, PA'    vs 'No REDD, PA'
+
+# 7.1 REDD, No PA vs No REDD, No PA
+sense_forestInt_1 <- run_sensemakr(
+  model_object = forestInt_1,
+  comparison_name = "REDD_noPA_vs_noREDD_noPA",
+  wd = wd)
+
+sum(!is.na(sense_carbon_flux_4$r2yd_x))
+median(sense_carbon_flux_4$r2yd_x, na.rm = TRUE)
+quantile(sense_carbon_flux_4$r2yd_x, 0.25, na.rm = TRUE)
+quantile(sense_carbon_flux_4$r2yd_x, 0.75, na.rm = TRUE)
+median(sense_carbon_flux_4$rv_q, na.rm = TRUE)
+quantile(sense_carbon_flux_4$rv_q, 0.25, na.rm = TRUE)
+quantile(sense_carbon_flux_4$rv_q, 0.75, na.rm = TRUE)
+median(sense_carbon_flux_4$rv_qa, na.rm = TRUE)
+quantile(sense_carbon_flux_4$rv_qa, 0.25, na.rm = TRUE)
+quantile(sense_carbon_flux_4$rv_qa, 0.75, na.rm = TRUE)
+
+sense_forestFrag_1 <- run_sensemakr(
+  model_object = forestFrag_1,
+  comparison_name = "REDD_noPA_vs_noREDD_noPA",
+  wd = wd)
+
+sense_biod_intact_1 <- run_sensemakr(
+  model_object = biod_intact_1,
+  comparison_name = "REDD_noPA_vs_noREDD_noPA",
+  wd = wd)
+
+sense_canopyheight_1 <- run_sensemakr(
+  model_object = canopyheight_1,
+  comparison_name = "REDD_noPA_vs_noREDD_noPA",
+  wd = wd)
+
+sense_carbon_flux_1 <- run_sensemakr(
+  model_object = carbon_flux_1,
+  comparison_name = "REDD_noPA_vs_noREDD_noPA",
+  wd = wd)
+
+# 7.2 REDD, No PA vs No REDD, PA
+sense_forestInt_2 <- run_sensemakr(
+  model_object = forestInt_2,
+  comparison_name = "REDD_noPA_vs_noREDD_PA",
+  wd = wd)
+
+sense_forestFrag_2 <- run_sensemakr(
+  model_object = forestFrag_2,
+  comparison_name = "REDD_noPA_vs_noREDD_PA",
+  wd = wd)
+
+sense_biod_intact_2 <- run_sensemakr(
+  model_object = biod_intact_2,
+  comparison_name = "REDD_noPA_vs_noREDD_PA",
+  wd = wd)
+
+sense_canopyheight_2 <- run_sensemakr(
+  model_object = canopyheight_2,
+  comparison_name = "REDD_noPA_vs_noREDD_PA",
+  wd = wd)
+
+sense_carbon_flux_2 <- run_sensemakr(
+  model_object = carbon_flux_2,
+  comparison_name = "REDD_noPA_vs_noREDD_PA",
+  wd = wd)
+
+# 7.3 REDD, PA vs No REDD, No PA
+sense_forestInt_3 <- run_sensemakr(
+  model_object = forestInt_3,
+  comparison_name = "REDD_PA_vs_noREDD_noPA",
+  wd = wd)
+
+sense_forestFrag_3 <- run_sensemakr(
+  model_object = forestFrag_3,
+  comparison_name = "REDD_PA_vs_noREDD_noPA",
+  wd = wd)
+
+sense_biod_intact_3 <- run_sensemakr(
+  model_object = biod_intact_3,
+  comparison_name = "REDD_PA_vs_noREDD_noPA",
+  wd = wd)
+
+sense_canopyheight_3 <- run_sensemakr(
+  model_object = canopyheight_3,
+  comparison_name = "REDD_PA_vs_noREDD_noPA",
+  wd = wd)
+
+sense_carbon_flux_3 <- run_sensemakr(
+  model_object = carbon_flux_3,
+  comparison_name = "REDD_PA_vs_noREDD_noPA",
+  wd = wd)
+
+# 7.4 REDD, PA vs No REDD, PA
+sense_forestInt_4 <- run_sensemakr(
+  model_object = forestInt_4,
+  comparison_name = "REDD_PA_vs_noREDD_PA",
+  wd = wd)
+
+sense_forestFrag_4 <- run_sensemakr(
+  model_object = forestFrag_4,
+  comparison_name = "REDD_PA_vs_noREDD_PA",
+  wd = wd)
+
+sense_biod_intact_4 <- run_sensemakr(
+  model_object = biod_intact_4,
+  comparison_name = "REDD_PA_vs_noREDD_PA",
+  wd = wd)
+
+sense_canopyheight_4 <- run_sensemakr(
+  model_object = canopyheight_4,
+  comparison_name = "REDD_PA_vs_noREDD_PA",
+  wd = wd)
+
+sense_carbon_flux_4 <- run_sensemakr(
+  model_object = carbon_flux_4,
+  comparison_name = "REDD_PA_vs_noREDD_PA",
+  wd = wd)
+```
